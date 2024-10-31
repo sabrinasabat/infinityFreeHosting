@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="u3e6_circulo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>Objetos Nativos JS - Circulo</title>
+</head>
+<body>
+
+  <button onclick="circulo()">Clique aquí</button>
+  <script>
+      // Crear la escena
+      const scene = new THREE.Scene();
+
+      // Crear la cámara
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      // Crear el renderizador
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Crear la geometría de la esfera
+      const geometry = new THREE.SphereGeometry(5, 32, 32); // radio, segmentos en ancho y alto
+      const material = new THREE.MeshBasicMaterial({ color: 0x00e676, wireframe: true }); // color y modo alambre
+      const sphere = new THREE.Mesh(geometry, material);
+
+      // Agregar la esfera a la escena
+      scene.add(sphere);
+
+      // Función de animación
+      function animate() {
+          requestAnimationFrame(animate);
+
+          // Rotar la esfera para visualizar el 3D
+          sphere.rotation.x += 0.01;
+          sphere.rotation.y += 0.01;
+
+          // Renderizar la escena
+          renderer.render(scene, camera);
+      }
+      animate();
+  </script>
+
+</body>
+</html>

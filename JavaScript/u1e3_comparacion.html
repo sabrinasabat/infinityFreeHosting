@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Comparación</title>
+    <script >
+
+        /*EJERCICIO: SINTAXIS DE LENGUAJE (u1e3_comparación)
+         Sabrina Sabat*/
+
+        var operacion1 = 10==10; //compara solo el valor
+        var operacion2 = 10===10;
+        var operacion3 = 10===10.0; // 3 iguales compara el valor y el tipo.
+        var operacion4 = "Laura" == "laura"; // es sensible a mayúsculas y minúsculas
+        var operacion5 = "Laura" > "laura"; //compara las cadenas basado en el valor unicode. (las mayúsculas tienen menor valor que las minúsculas)
+        var operacion6 = "Laura" < "laura"; //lo mismo de arriba, pero el resultado seria true.
+        var operacion7 = "123" == 123; //convierte a número antes de la comparación, por eso será true.
+        var operacion8 = "123" === 123; //compara valor y tipo.
+        var operacion9 = parseInt("123") === 123; // parseInt convierte string en entero.
+
+        // Salto de línea entre 'la operacion' con el resultado para que se visualize mejor.
+        window.alert("La operación: "+"\n" + "10 = 10 es: "+operacion1)
+        window.alert("La operación: "+"\n" + "10 === 10 es: "+operacion2)
+        window.alert("La operación: "+"\n" + "10 === 10.0 es: "+operacion3)
+        window.alert("La operación: "+"\n" + " Laura == laura es: "+operacion4)
+        window.alert("La operación: "+"\n" + " Laura > laura es: "+operacion5)
+        window.alert("La operación: "+"\n" + " Laura < laura es: "+operacion6)
+        window.alert("La operación: "+"\n" + " '123' == 123 es: "+operacion7)
+        window.alert("La operación: "+"\n" + " '123' === 123 es: "+operacion8)
+        window.alert("La operación: "+"\n" + " parseInt('123') === 123 es: "+operacion9)
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
