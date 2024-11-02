@@ -15,4 +15,6 @@
     }
     echo "Conexión exitosa";
 
+    $conn->close();
+
 ?>
