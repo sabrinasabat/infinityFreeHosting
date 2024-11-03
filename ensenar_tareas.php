@@ -8,10 +8,10 @@
     $result = $conexion->query($sql);
 
     if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
+        while($listado = $result->fetch_assoc()){ //Fetch_assoc es una función que retorna como un array, cada llave en una columna
             echo "<tr>";
-            echo "<td>". htmlspecialchars($row["task"]). "</td>";
-            echo "<td>". htmlspecialchars($row["status"]). "</td>";
+            echo "<td>". $listado["task"]. "</td>";
+            echo "<td>". $listado["status"]. "</td>";
             echo "</tr>";
         }
     } else {

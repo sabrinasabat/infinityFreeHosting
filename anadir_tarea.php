@@ -8,10 +8,10 @@
         $task = $_POST['task'];
 
 //No dejaré que haya tareas duplicadas
-        $sql_check = "SELECT * FROM tasks WHERE task = '$task'";
-        $result_check = $conexion->query($sql_check);
+        $sql_busqueda = "SELECT * FROM tasks WHERE task = '$task'";
+        $resultado_busqueda = $conexion->query($sql_busqueda);
 
-        if($result_check -> num_rows >0){
+        if($resultado_busqueda -> num_rows >0){
             echo "Error: La tarea ya existe";
         } else{
             //Añadir nueva tarea
