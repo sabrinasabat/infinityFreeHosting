@@ -33,7 +33,6 @@
             <th>Estado</th>
         </tr>
         <?php
-            echo "<tr><td>Testando PHP</td><td>Funciona</td>";
             include 'ensenar_tareas.php';
         ?>
     </table>

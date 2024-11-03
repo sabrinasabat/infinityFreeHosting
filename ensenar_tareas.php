@@ -1,5 +1,5 @@
 <?php
-    echo "<p>ensenar_tareas.php funciona</p>";
+
     include 'conexion_ddbb.php';
 
     global $conexion;
