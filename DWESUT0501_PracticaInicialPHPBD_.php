@@ -9,6 +9,7 @@
             width: 100%;
         }
         table, th, td{
+            font-family: Consolas, serif;
             border: 3px solid #9a8702;
             background-color: rgba(211, 211, 211, 0.94);
             padding: 8px;
