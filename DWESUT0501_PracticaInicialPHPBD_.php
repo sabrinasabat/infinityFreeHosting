@@ -9,8 +9,8 @@
             width: 100%;
         }
         table, th, td{
-            border: 3px solid #33dc09;
-            background-color: #d3d3d3;
+            border: 3px solid #9a8702;
+            background-color: rgba(211, 211, 211, 0.94);
             padding: 8px;
             text-align: left;
         }
