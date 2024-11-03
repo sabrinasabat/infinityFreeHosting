@@ -17,4 +17,6 @@
         echo "<tr> <td colspan='2'> No se encontraron tareas</td> </tr>";
     }
 
+//Cerrar la conexión
+    $conexion->close();
 ?>
