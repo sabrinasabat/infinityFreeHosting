@@ -19,7 +19,7 @@
         }
 
 // Al crear la tarea, volverá a la página inicial
-        header("Location: DWESUT0501_PracticaInicialPHPBD_.html");
+        header("Location: DWESUT0501_PracticaInicialPHPBD_.php");
         exit;
     }else{
         echo "Por favor, introduzca una tarea";

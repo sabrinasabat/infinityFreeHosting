@@ -9,7 +9,7 @@
             width: 100%;
         }
         table, th, td{
-            border: 3px solid deeppink;
+            border: 3px solid #9a8702;
             background-color: #d3d3d3;
             padding: 8px;
             text-align: left;
