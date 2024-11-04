@@ -3,21 +3,19 @@
 <body>
 <?php
 
-function get_browser_name($user_agent)
+function nombre_navegador($navegador)
 {
-    if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) return 'Opera';
-    elseif (strpos($user_agent, 'Edge')) return 'Edge';
-    elseif (strpos($user_agent, 'Chrome')) return 'Chrome';
-    elseif (strpos($user_agent, 'Safari')) return 'Safari';
-    elseif (strpos($user_agent, 'Firefox')) return 'Firefox';
-    elseif (strpos($user_agent, 'MSIE') || strpos($user_agent, 'Trident/7')) return 'Internet Explorer';
+    if (strpos($navegador, 'Opera') || strpos($navegador, 'OPR/')) return 'Opera';
+    elseif (strpos($navegador, 'Edg')) return 'Edge';
+    elseif (strpos($navegador, 'Chrome')) return 'Chrome';
+    elseif (strpos($navegador, 'Safari')) return 'Safari';
+    elseif (strpos($navegador, 'Firefox')) return 'Firefox';
+    elseif (strpos($navegador, 'MSIE') || strpos($navegador, 'Trident/7')) return 'Internet Explorer';
 
     return 'Other';
 }
 
-// Usage:
-
-echo get_browser_name($_SERVER['HTTP_USER_AGENT']);
+echo nombre_navegador($_SERVER['HTTP_USER_AGENT']);
 
 ?>
 </body>
