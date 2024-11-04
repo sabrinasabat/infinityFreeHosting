@@ -3,7 +3,7 @@
 <body>
 <?php
 
-function nombre_navegador($navegador)
+/*function nombre_navegador($navegador)
 {
     if (strpos($navegador, 'Opera') || strpos($navegador, 'OPR/')) return 'Opera';
     elseif (strpos($navegador, 'Edg')) return 'Edge';
@@ -15,7 +15,13 @@ function nombre_navegador($navegador)
     return 'Other';
 }
 
-echo nombre_navegador($_SERVER['HTTP_USER_AGENT']);
+echo nombre_navegador($_SERVER['HTTP_USER_AGENT']);*/
+
+echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+
+$navegador = get_browser(null, true);
+print_r($navegador);
+
 
 ?>
 </body>
