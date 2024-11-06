@@ -42,7 +42,7 @@
         <th>Ciclo</th>
     </tr>
     <?php
-    include 'inserirAlumnos.php';
+    include 'consultaSimple_estudiante.php';
     ?>
 </table>
 </body>

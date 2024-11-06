@@ -11,8 +11,4 @@
         echo "Datos eliminados";
     }
 
-
-
-
-
 ?>

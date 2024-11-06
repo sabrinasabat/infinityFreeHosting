@@ -9,7 +9,5 @@
     $conexion = mysqli_connect($servidor, $usuario, $contrasena, $database); //Me he fijado que se utiliza siempre en
     if(!$conexion){                                                     // esta misma orden, el orden importa?
         die("No fue posible realizar la conexión. ERROR:".mysqli_connect_error()."<br>");
-    } else{              // el uso del mysqli_connect_error() es para capturar el texto del error y enseñarlo
-        echo "Muy bien, fue posible conectar a la base de datos";
-    }
+    }// el uso del mysqli_connect_error() es para capturar el texto del error y enseñarlo
 ?>
