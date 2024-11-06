@@ -2,6 +2,7 @@
     include 'conexionDDBB_estudiante.php';
     global $conexion;
 
+    //Consulta de un dato simple
     $instruccion = "select nombre from estudiante where Dni = '52666666F'";
     $res = mysqli_query($conexion, $instruccion);
     if(mysqli_errno($conexion) != 0){

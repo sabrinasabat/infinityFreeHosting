@@ -43,6 +43,7 @@
     </tr>
     <?php
     include 'consultaSimple_estudiante.php';
+    include 'consultaVarios_estudiante.php';
     ?>
 </table>
 </body>
