@@ -9,7 +9,10 @@
         while($fila!=null){
             $nombre = $fila['nombre'];
             $edad = $fila['edad'];
-            echo "Nombre: ".$nombre."<br>Edad: ".$edad."<br>";
+            echo "<tr>";
+            echo "<td>".$nombre."</td>";
+            echo "<td>".$edad."</td>";
+            //echo "Nombre: ".$nombre."<br>Edad: ".$edad."<br>";
             $fila = mysqli_fetch_assoc($res);
         }
     }
