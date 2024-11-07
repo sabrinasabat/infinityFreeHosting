@@ -19,7 +19,7 @@
 </head>
 <body>
 <h1>Estudiantes</h1>
-<!--
+
 <form action="inserirAlumnos.php" method="POST">
     <label for="estudiante">DNI del estudiante:</label>
     <input type="text" id="dni" name="dni" required>
@@ -30,10 +30,10 @@
     <label for="estudiante">Ciclo:</label>
     <input type="text" id="ciclo" name="ciclo" required>
     <button type="submit">Añadir Alumno</button>
-</form>-->
+</form>
 
 <h2>Listas de Alumnos</h2>
-<!--
+
 <table>
     <tr>
         <th>DNI</th>
@@ -41,9 +41,9 @@
         <th>Edad</th>
         <th>Ciclo</th>
     </tr>
-</table>    -->
+</table>
     <?php
-    include 'consultaSimple_estudiante.php';
+    //include 'consultaSimple_estudiante.php';
     include 'consultaVarios_estudiante.php';
     ?>
 
