@@ -41,6 +41,9 @@
         <th>Edad</th>
         <th>Ciclo</th>
     </tr>
+
+
+
 </table>
     <?php
     //include 'consultaSimple_estudiante.php';
