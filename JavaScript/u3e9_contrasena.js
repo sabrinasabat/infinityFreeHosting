@@ -19,9 +19,9 @@ function contrasena() {
 
     if (contrasena.length >= 8 && contrasena.length <= 16) {
         if (/[A-Z]/g.test(contrasena)) {
-            if(/[a-z]/g.test(contrasena)) {
-                if(/[0-9]/g.test(contrasena)) {
-                    if(/[-_@#$%&]/g.test(contrasena)){
+            if (/[a-z]/g.test(contrasena)) {
+                if (/[0-9]/g.test(contrasena)) {
+                    if (/[-_@#$%&]/g.test(contrasena)) {
                         contrasenaSegura = 1;
                     } else {
                         contrasenaSegura = 2;
