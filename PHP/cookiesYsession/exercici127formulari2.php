@@ -1,4 +1,5 @@
 <?php
+    session_start();
 //Lee los datos y los mete en la sesión. A continuación, muestra el resto de campos
 //del formulario a rellenar(convivientes, aficiones y menú). Envía estos datos a 'exercici127formulari3.php'
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -22,8 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <p><b>URL: </b><?php echo htmlspecialchars($_SESSION['url'])?></p>
     <p><b>Sexo: </b><?php echo htmlspecialchars($_SESSION['sexo'])?></p>
 
-
-<h1>Formulario 2</h1>
+    <h1>Formulario 2</h1>
 <form action="exercici127formulari3.php" method="post">
     <label for="convivientes">Convivientes: </label>
     <input type="number" name="convivientes" id="convivientes" required>
