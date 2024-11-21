@@ -1,8 +1,8 @@
 <?php
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $nom = $_POST['nom'];
-        $dni = $_POST['dni'];
         $edat = $_POST['edat'];
+        $dni = $_POST['dni'];
     }
 
     echo "Nombre: $nom <br>";
