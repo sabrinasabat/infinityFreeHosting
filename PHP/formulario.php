@@ -6,9 +6,11 @@
         $dades = $_POST['dades'];
     }
 
+    $dadesJason = json_decode($dades, true);
+
     echo "Nombre: $nom <br>";
     echo "DNI: $dni <br>";
     echo "Edad: $edat <br>";
-    echo "Dades: $dades<br>;"
+    echo "Dades: $dadesJason<br>;"
 
 ?>
