@@ -12,5 +12,4 @@
     echo "DNI: $dni <br>";
     echo "Edad: $edat <br>";
     echo "Dades: $dadesJason<br>;"
-
 ?>
