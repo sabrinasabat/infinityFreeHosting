@@ -3,10 +3,12 @@
         $nom = $_POST['nom'];
         $edat = $_POST['edat'];
         $dni = $_POST['dni'];
+        $dades = $_POST['dades'];
     }
 
     echo "Nombre: $nom <br>";
     echo "DNI: $dni <br>";
     echo "Edad: $edat <br>";
+    echo "Dades: $dades<br>;"
 
 ?>
