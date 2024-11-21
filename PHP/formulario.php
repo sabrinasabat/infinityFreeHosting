@@ -9,7 +9,7 @@
 
     // Intentamos decodificar el campo JSON (dades)
     $dades_json = json_decode($dades, true); // Convertirlo en un array asociativo
-    $dades_json.json_encode($dades_json, JSON_PRETTY_PRINT);
+    $dades_json.json_encode($dades, JSON_PRETTY_PRINT);
 
 
     echo "Nombre: $nom <br>";
