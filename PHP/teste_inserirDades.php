@@ -31,7 +31,4 @@
       servidor. El use_include_path está como falso porque no estamos buscando un archivo local.*/
     $resultado = file_get_contents($url, false, $context);
 
-    /*Conclusiones de lo que hice::::
-     * */
-
 ?>
