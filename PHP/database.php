@@ -7,14 +7,13 @@
     $password = 'swagnabrisa1';
 
 //Crear una nueva conexión:
-    $conn = new mysqli($host, $username, $password, $dbname);
+    $conexionDDBB = new mysqli($host, $username, $password, $dbname);
 
 //Verificar la conexión:
-    if($conn->connect_error){
-        die("No fue posible conectar: ".$conn->connect_error);
+    if($conexionDDBB->connect_error){
+        die("No fue posible conectar: ".$conexionDDBB->connect_error);
     }
     echo "Conexión exitosa";
 
-    $conn->close();
 
 ?>
