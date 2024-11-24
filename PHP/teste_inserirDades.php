@@ -1,31 +1,33 @@
 <?php
-    // URL do script principal
-    $url = "https://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    // Dados a serem enviados no formato JSON
-    $dados = array(
-        "dades" => json_encode(array(
-            "nom" => "João Silva", // Nome
-            "edat" => 30,          // Idade
-            "dni" => "12345678A"   // DNI
-        ))
-    );
+// URL do script principal
+$url = "https://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
 
-    // Configurar a requisição POST
-    $options = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($dados),
-        ),
-    );
+// Dados a serem enviados no formato JSON
+$dados = array(
+    "dades" => json_encode(array(
+        "nom" => "João Silva", // Nome
+        "edat" => 30,          // Idade
+        "dni" => "12345678A"   // DNI
+    ))
+);
 
-    $context = stream_context_create($options);
+// Configurar a requisição POST
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($dados),
+    ),
+);
 
-    // Fazer a requisição para o script principal
-    $resultado = file_get_contents($url, false, $context);
+$context = stream_context_create($options);
 
-    // Exibir o resultado retornado pelo script principal
-    echo $resultado;
+// Fazer a requisição para o script principal
+$resultado = file_get_contents($url, false, $context);
+
+// Exibir o resultado retornado pelo script principal
+echo $resultado;
 ?>
-
