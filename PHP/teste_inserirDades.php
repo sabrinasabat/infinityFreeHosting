@@ -1,33 +1,37 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//testeando con un script creado por mi
 
-// URL do script principal
-$url = "http://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
+    //URL del archivo donde los datos seran enviados
+    $url = "http://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
 
-// Dados a serem enviados no formato JSON
-$dados = array(
-    "dades" => json_encode(array(
-        "nom" => "João Silva", // Nome
-        "edat" => 30,          // Idade
-        "dni" => "12345678A"   // DNI
-    ))
-);
+    //Datos definidos en JSON que seran enviados
+    $dados = array( //He creado el array que será enviado por POST utilizando la funcion abajo "http_build_query".
+        "dades" => json_encode(array( //json_encode convierte un array en un string JSON
+            "nom" => "Rafael Garcia",
+            "edat" => 44,
+            "dni" => "48975000L"
+        ))
+    );
 
-// Configurar a requisição POST
-$options = array(
-    'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($dados),
-    ),
-);
+    //Configurar la requisición POST
+    $confReq = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded", //formato de los datos (padrón de formularios HTML)
+            'method'  => 'POST', //método de envío
+            'content' => http_build_query($dados), //datos a ser enviados convertido en un formato adecuado
+        ),
+    );
 
-$context = stream_context_create($options);
+    /*Transformo el array $confReq, que es el que define el método, encabezado y pilla los datos configurado anteriormente
+      en un objeto que será utilizado en la función 'file_get_contents' para que se pueda realizar la requisición.*/
+    $context = stream_context_create($confReq);
 
-// Fazer a requisição para o script principal
-$resultado = file_get_contents($url, false, $context);
+    /*Esta función conecta al servidor pasado por la $url, envía los datos utilizando todo el $context configurado
+      anteriormente y retorna la respuesta del servidor. Entendí que sin esa función los datos no son enviados para el
+      servidor. El use_include_path está como falso porque no estamos buscando un archivo local.*/
+    $resultado = file_get_contents($url, false, $context);
 
-// Exibir o resultado retornado pelo script principal
-echo $resultado;
+    /*Conclusiones de lo que hice::::
+     * */
+
 ?>
