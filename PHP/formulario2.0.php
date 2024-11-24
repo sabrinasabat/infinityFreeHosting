@@ -42,5 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Método HTTP inválido. Use POST.";
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "Método POST detectado.<br>";
+    echo "Dados recebidos:<br>";
+    var_dump($_POST);
+} else {
+    echo "Método recebido: " . $_SERVER["REQUEST_METHOD"] . "<br>";
+    echo "Nenhum dado foi enviado.<br>";
+}
+
+
 $conexionDDBB->close();
 ?>
