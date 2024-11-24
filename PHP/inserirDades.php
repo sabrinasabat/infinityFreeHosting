@@ -1,42 +1,54 @@
 <?php
-// Incluir a conexão com o banco de dados
+    //Archivo con la conexión a la base de datos
     include 'database.php';
+
+    //Si no pongo como global no pilla la variable
     global $conexionDDBB;
 
-// Verificar se os dados foram enviados pelo método POST
+    //Verifico si el método utilizado es el POST, si es, pillo los datos
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receber os dados em JSON
-        $dados_json = $_POST['dades'] ?? null;
 
-        // Verificar se os dados foram enviados
+        //pilo los datos de 'dades' que es el array que contiene los datos
+        $dados_json = $_POST['dades'] ?? null; //Si no hay datos, la variable será null
+
+        //Verifico si hay datos, porque si es null, no hay porque seguir con el proceso
         if ($dados_json) {
-            // Decodificar JSON para um array associativo
+
+            /*Decodifico los datos JSON en un array. Para acceder a los datos del JSON en el PHP, necesito transformarlo
+            en un formato que el PHP entienda. El array. Sera un array asociativo en vez de objetos */
             $dados = json_decode($dados_json, true);
 
-            // Validar os campos necessários
+            /*Había visto creo que en su paágina que siempre es importante verificar si los datos existen antes de hacer
+            cualquier cosa por eso el isset. */
             if (isset($dados['nom'], $dados['edat'], $dados['dni'])) {
+
+                //Atribuyo los valores a las variables
                 $nom = $dados['nom'];
                 $edat = $dados['edat'];
                 $dni = $dados['dni'];
 
                 // Preparar a instrução SQL para inserir os dados
+                //Los ??? indican donde los valores seran inseridos
                 $sql_insert = "INSERT INTO dades (nom, edat, dni) VALUES (?, ?, ?)";
-                $stmt = $conexionDDBB->prepare($sql_insert);
 
-                if ($stmt) {
-                    // Associar os valores aos placeholders
-                    $stmt->bind_param("sis", $nom, $edat, $dni);
+                //Prepara la instrucción SQL para inserir los datos
+                $sqlPreparada = $conexionDDBB->prepare($sql_insert);
 
-                    // Executar a instrução
-                    $stmt->execute();
+                if ($sqlPreparada) {
+                    /*Asignar los valores a los parámetros ??? de la instrucción SQL
+                      "sis" porque es string para nom, int para edat y string para dni*/
+                    $sqlPreparada->bind_param("sis", $nom, $edat, $dni);
 
-                    // Fechar a instrução
-                    $stmt->close();
+                    //Ejecuto la instrucción para inserir los datos en la tabla de la base de datos
+                    $sqlPreparada->execute();
+
+                    //Cierro la instrucción
+                    $sqlPreparada->close();
                 }
             }
         }
     }
 
-// Fechar a conexão com o banco de dados
+//Cierro la conexión con la base de datos
 $conexionDDBB->close();
 ?>
