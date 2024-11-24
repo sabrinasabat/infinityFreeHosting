@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // URL do script principal
-$url = "https://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
+$url = "http://ssabat.infinityfreeapp.com/PHP/inserirDades.php";
 
 // Dados a serem enviados no formato JSON
 $dados = array(
