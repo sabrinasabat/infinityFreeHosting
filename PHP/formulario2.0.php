@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($dades_json['nom'], $dades_json['edat'], $dades_json['dni'])) {
             // Extrair os valores do JSON
             $nom = $dades_json['nom']; // Nome
-            $edat = (int)$dades_json['edat']; // Idade convertida para inteiro
+            $edat = $dades_json['edat']; // Idade convertida para inteiro
             $dni = $dades_json['dni']; // DNI
 
             // Preparar a consulta SQL para inserir os dados no banco
