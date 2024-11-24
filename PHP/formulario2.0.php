@@ -1,32 +1,31 @@
 <?php
-// Incluir o arquivo de conexão com o banco de dados
 include 'database.php';
 global $conexionDDBB;
 
-// Verificar se os dados foram enviados pelo método POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dades = $_POST['dades'] ?? null;
 
     if ($dades) {
         $dades_json = json_decode($dades, true);
-        var_dump($dades_json); // Mostrar os dados recebidos para depuração
 
+        // Validar o JSON recebido
         if (isset($dades_json['nom'], $dades_json['edat'], $dades_json['dni'])) {
             $nom = $dades_json['nom'];
             $edat = (int)$dades_json['edat'];
             $dni = $dades_json['dni'];
 
+            echo "Nome: $nom, Idade: $edat, DNI: $dni<br>";
+
             $sql_insert = "INSERT INTO dades (nom, edat, dni) VALUES (?, ?, ?)";
             $stmt = $conexionDDBB->prepare($sql_insert);
 
             if ($stmt) {
-                echo "Consulta preparada com sucesso.<br>";
                 $stmt->bind_param("sis", $nom, $edat, $dni);
 
                 if ($stmt->execute()) {
                     echo "Dados inseridos com sucesso!";
                 } else {
-                    echo "Erro ao inserir os dados: " . $stmt->error;
+                    echo "Erro ao inserir no banco: " . $stmt->error;
                 }
 
                 $stmt->close();
