@@ -10,11 +10,13 @@
     // Decodificando el JSON
     $dades_json = json_decode($dades, true);
 
-    echo "Nombre: $nom <br>";
+    //Primera tentativa (Así imprime en formato json)
+    /*echo "Nombre: $nom <br>";
     echo "DNI: $dni <br>";
     echo "Edad: $edat <br>";
-    echo json_encode($dades_json);
+    echo json_encode($dades_json);*/
 
+    //Segunda tentativa (Así imprime en formato texto)
     echo "Nombre: ".$dades_json['nom']."<br>";
     echo "Edad: ".$dades_json['edat']."<br>";
     echo "DNI: ".$dades_json['dni']."<br>";
