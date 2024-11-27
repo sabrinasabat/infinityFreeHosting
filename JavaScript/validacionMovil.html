@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CEP</title>
+</head>
+<body>
+<form id="formulario" onsubmit="return validar();">
+    <input type="text" id="telefono" required>
+    <button type="submit">Enviar</button>
+</form>
+<script>
+    function validar(){
+        var cel = document.getElementById('telefono').value;
+        var celValidado = /^[0-9]{3}[-][0-9]{3}[-][0-9]{3}$/; //Expresion regular para validar un numero de telefono
+        // Los formularios conviene validarlos siempre antes de enviar, para evitar errores en el servidor utilizando expresiones regulares
+        var celFinal = celValidado.test(cel);
+        alert("phone: " + celFinal);
+        return celFinal; // Retorna true si es valid o false si no es
+    }
+
+</script>
+</body>
+</html>

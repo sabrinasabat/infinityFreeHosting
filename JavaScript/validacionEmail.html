@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validación EMAIL</title>
+</head>
+<body>
+<form id="formulario" onsubmit="return validar();">
+  <input type="text" id="email" required>
+  <button type="submit">Enviar</button>
+</form>
+<script>
+  function validar(){
+    var email = document.getElementById('email').value;
+    // En este programa hay un limite de caracteres, visto que es teste de aprendizaje
+    //Lo que no podemos comprobar con validaciones
+    // Siempre bueno especificar por escrito lo que es valido
+
+    var emailValido = /^[a-zA-Z0-9._-]{1,64}[@]{1}[a-z]{0,129}[\.]{1}[a-z]{2,3}$/ //Expresion regular para validar un numero de telefono
+    // Los formularios conviene validarlos siempre antes de enviar, para evitar errores en el servidor utilizando expresiones regulares
+    var emailfinal = emailValido.test(email);
+    alert("email: " + emailfinal);
+    return emailfinal; // Retorna true si es valid o false si no es
+  }
+
+</script>
+</body>
+</html>
