@@ -11,33 +11,66 @@
 <body>
 <div class="container text-white"><br>
   <div class="text-left">
-    <button class="btn">
-      <input type="button" class="volver" value="Volver" onClick="history.go(-1);">
-    </button>
+    <input type="button" class="btn volver" value="Volver" onClick="history.go(-1);">
   </div>
   <div class="container text-center">
     <img src="deadpool4.jpg" class="rounded-circle border border-light" alt="Foto Perfil" width="204" height="200">
   </div>
   <br><h1>Estudios</h1>
   <br><br>
-  <div class="container">
-    <p>
-      <strong style="color: yellowgreen">ESCUELA DE LA VIDA | Islas Baleares, Palma de Mallorca</strong><br><br>
-      <em>Maestría en Supervivencia y Sarcasmo Avanzado</em><br><br>
-      <span>2022 – Actualidad</span><br>
-      &nbsp - Certificado en resolver problemas complejos bajo presión extrema (y con múltiples heridas).<br>
-      &nbsp - Entrenamiento intensivo en combate cuerpo a cuerpo, tácticas de evasión y "romper la cuarta pared".<br>
-      &nbsp - Especialización en improvisación táctica, desactivación de bombas, y manejo de espadas en entornos de alta tensión.<br>
-    </p><br>
-    <p>
-      <strong style="color: yellowgreen">ACADÉMIA DE ARMAS Y LOCURAS | Islas Baleares, Palma de Mallorca</strong><br><br>
-      <em>Diploma en Destrucción Creativa</em><br><br>
-      <span>2018 – 2022</span><br>
-      &nbsp - Dominio avanzado de armas blancas y fuego (y armas blancas en llamas).<br>
-      &nbsp - Habilidades en motivación del equipo con comentarios hilarantes (aunque no siempre bien recibidos).<br>
-      &nbsp - Competencia básica en tecnología... pero no esperes que responda emails.<br>
-    </p>
 
+  <!-- Botón -->
+  <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <strong style="color: yellowgreen">ESCUELA DE LA VIDA | Islas Baleares, Palma de Mallorca</strong>
+  </button>
+
+  <!-- Texto dentro del botón -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: black">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Experiencia...</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: black">
+          <em>Maestría en Supervivencia y Sarcasmo Avanzado</em><br><br>
+          <span>2022 – Actualidad</span><br>
+          &nbsp; - Certificado en resolver problemas complejos bajo presión extrema (y con múltiples heridas).<br>
+          &nbsp; - Entrenamiento intensivo en combate cuerpo a cuerpo, tácticas de evasión y "romper la cuarta pared".<br>
+          &nbsp; - Especialización en improvisación táctica, desactivación de bombas, y manejo de espadas en entornos de alta tensión.<br>
+        </div>
+        <div class="modal-footer" style="background-color: black">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+  <!-- Botón -->
+  <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+    <strong style="color: yellowgreen">ACADÉMIA DE ARMAS Y LOCURAS | Islas Baleares, Palma de Mallorca</strong>
+  </button>
+
+  <!-- Texto dentro del boton -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: black">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">Experiencia ...</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: black">
+          <em>Diploma en Destrucción Creativa</em><br><br>
+          <span>2018 – 2022</span><br>
+          &nbsp; - Dominio avanzado de armas blancas y fuego (y armas blancas en llamas).<br>
+          &nbsp; - Habilidades en motivación del equipo con comentarios hilarantes (aunque no siempre bien recibidos).<br>
+          &nbsp; - Competencia básica en tecnología... pero no esperes que responda emails.<br>
+        </div>
+        <div class="modal-footer" style="background-color: black">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </body>

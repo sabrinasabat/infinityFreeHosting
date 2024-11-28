@@ -1,5 +1,6 @@
 body{
     background-color: black;
+    font-family: "Calibri", serif;
 }
 
 h1 {
@@ -15,6 +16,7 @@ h1 {
   }
 
 .socialmidia{
+    transform: scale(1, 1.5);
     font-size: 40px;
     text-align: center;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -25,12 +27,19 @@ h1 {
     animation:
             typing 3.5s steps(40, end),
             blink-caret .75s step-end infinite;
-}
+    }
 
   svg{
     position:absolute;
     right: 50px;
     margin-top: 6px;
+  }
+
+  .iconosize{
+    width: 150px;
+    height: 150px;
+    left: 5px;
+    position: relative;
   }
 
   #back{
@@ -42,7 +51,7 @@ h1 {
   p{
     text-align: justify;
   }
-  
+
   .volver{
     border-radius: 5px;
     background-color:#d3d3d3;
@@ -54,7 +63,7 @@ h1 {
     from { width: 0 }
     to { width: 100% }
   }
-  
+
   /* Efecto del cursor */
   @keyframes blink-caret {
     from, to { border-color: transparent }
