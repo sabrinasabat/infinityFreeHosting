@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practicando</title>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td{
+            border: 1px solid greenyellow;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th{
+            background-color: beige;
+        }
+
+        button{
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form id="formPersonas">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" required>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required>
+        <button type="button" onclick="agregarDesdeFormulario()">Agregar persona</button>
+    </form>
+
+    <table id="tablaPersonas">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Las filas de personas se agregarán aqui -->
+        </tbody>
+    </table>
+    <script src="probandoObjetoyFunciones.js"></script>
+</body>
+</html>
