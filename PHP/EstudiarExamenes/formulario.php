@@ -3,6 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>Estudiando para los examenes</title>
+        <style>
+            table{
+                width: 100%;
+                margin-top: 50px;
+                border-collapse: collapse;
+            }
+
+            tr, th{
+                border: 2px solid #d3d3d3;
+                text-align: center;
+                padding: 10px;
+            }
+
+            th{
+                background-color: blanchedalmond;
+            }
+
+        </style>
     </head>
     <body>
         <h1>Formulario para añadir personas</h1>
