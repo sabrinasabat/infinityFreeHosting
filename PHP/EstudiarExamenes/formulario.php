@@ -36,7 +36,6 @@
 
             <button type="submit">Enviar</button>
         </form>
-
     <table>
         <thead>
             <tr>
@@ -51,8 +50,6 @@
         <?php
         include 'ensenarPersonas.php';
         ?>
-
-
         </tbody>
     </table>
 
