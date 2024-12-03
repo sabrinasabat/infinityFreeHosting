@@ -19,8 +19,6 @@
             <button type="submit">Enviar</button>
 
         </form>
-        <?php
-        include 'manejarBaseDeDatos.php';
-        ?>
+
     </body>
 </html>
