@@ -1,13 +1,13 @@
 <?php
 
-    //Datos de la conexion
+    //Datos de la conexion.
     $host = 'sql108.infinityfree.com';
-    $nombreDDBB = 'if0_37620352_estudiar_examenes';
     $usuario = 'if0_37620352';
     $contrasena = 'swagnabrisa1';
+    $nombreDDBB = 'if0_37620352_estudiar_examenes';
 
-    //Creando una conexion
-    $conexionDDBB = new mysqli($host, $nombreDDBB, $usuario, $contrasena);
+    //Creando una conexion, hay que poner EN ESTA ORDEN
+    $conexionDDBB = new mysqli($host, $usuario, $contrasena, $nombreDDBB);
 
     //Verifico la conexion
     if($conexionDDBB->connect_error){
