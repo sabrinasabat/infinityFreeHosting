@@ -19,4 +19,14 @@
 
     $conexionDDBB->close();
 
+
+    if($_SERVER["REQUEST_METHOD"]=="post"){
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $edad = $_POST['edad'];
+        $email = $_POST['email'];
+
+        $sentencias = "INSERT INTO Personas VALUES('$nombre', '$apellido', '$edad', '$email')";
+    }
+
 ?>
