@@ -8,8 +8,8 @@
             session_start();
             include 'formulario.php';
         } else {
-            echo "No tienes permiso para acceder.";
-            header("Location: loginUsuario.php");
+            $error = "Usuario o contraseña incorrectos";
+            include 'identificarse.php';
         }
     }
 
