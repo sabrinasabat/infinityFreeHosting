@@ -9,6 +9,14 @@
 <form action="loginUsuario.php" method="POST">
     <fieldset>
         <legend>Login</legend>
+        <div>
+            <span class="error">
+                <?php
+                global $error;
+                echo $error;
+                ?>
+            </span>
+        </div>
         <div class="fila">
             <label for="usuario">Usuario:</label>
             <input type="text" id="usuario" name="usuario"><br>

@@ -12,8 +12,4 @@
             include 'identificarse.php';
         }
     }
-
-
-
-
 ?>
