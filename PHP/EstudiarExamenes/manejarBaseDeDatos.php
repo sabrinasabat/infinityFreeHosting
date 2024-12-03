@@ -28,6 +28,7 @@
 
         if($conexionDDBB->query($sentencias)==TRUE){
             echo "Persona añadida con succeso.";
+            header("Location: formulario.php");
         } else {
             echo "Error al añadir esta persona." . $conexionDDBB->error;
         }
