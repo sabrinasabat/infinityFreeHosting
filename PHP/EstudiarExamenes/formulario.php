@@ -17,8 +17,26 @@
             <input type="email" id="email" name="email" required>
 
             <button type="submit">Enviar</button>
-
         </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        include 'ensenarPersonas.php';
+        ?>
+
+
+        </tbody>
+    </table>
 
     </body>
 </html>

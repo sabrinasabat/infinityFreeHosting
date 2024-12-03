@@ -16,6 +16,7 @@
     } else {
         echo "Error al crear la tabla." . $conexionDDBB ->error;
     }
+// -----------------------------------------------------------------------------------------------------------------
 
     //Inserir las personas que fueron rellenadas en el formulario
     if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -33,7 +34,8 @@
             echo "Error al añadir esta persona." . $conexionDDBB->error;
         }
     }
+    // -------------------------------------------------------------------------------------------------------------
 
-    $conexionDDBB->close();
+
 
 ?>
