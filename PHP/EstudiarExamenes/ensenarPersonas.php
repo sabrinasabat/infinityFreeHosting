@@ -1,4 +1,5 @@
 <?php
+    include 'conexionBaseDeDatos.php';
     global $conexionDDBB;
     $sentencias = "SELECT * FROM Personas";
     $resultado = $conexionDDBB -> query($sentencias);
