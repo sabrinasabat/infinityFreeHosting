@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EVENTO</title>
+  <style>
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 100px;
+    }
+
+    tr, td{
+      border: 2px solid green;
+      text-align: center;
+      padding: 2px;
+    }
+
+    tbody{
+      background-color: bisque;
+    }
+  </style>
+  <script src="entradasEvento.js"></script>
+</head>
+<body>
+  <form id="entradasEvento" action="entradasEvento.js" method="post">
+    <label for="nombre">Nombre del Asistente:</label>
+    <input type="text" id="nombre" required>
+    <label for="correo">Correo Electrónico:</label>
+    <input type="email" id="correo" required>
+    <label for="fechaInscripcion">Fecha de Inscripción:</label>
+    <input type="date" id="fechaInscripcion" required>
+
+    <button type="button" onclick="adcionarEntradas()">Enviar formulário</button>
+    <button type="button" onclick="eliminarEntradas()">Borrar todos los registros</button>
+  </form>
+
+  <table id="tablaEvento">
+    <thead>
+    <tr>
+      <td>Nombre</td>
+      <td>Correo</td>
+      <td>Fecha de Inscripción</td>
+      <td>Acción</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <p id="numEntradas">Total de Entradas:</p>
+
+</body>
+</html>
