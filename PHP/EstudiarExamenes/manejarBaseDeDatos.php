@@ -17,17 +17,22 @@
         echo "Error al crear la tabla." . $conexionDDBB ->error;
     }
 
-    $conexionDDBB->close();
-
-
     //Inserir las personas que fueron rellenadas en el formulario
-    if($_SERVER["REQUEST_METHOD"]=="post"){
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $edad = $_POST['edad'];
         $email = $_POST['email'];
 
         $sentencias = "INSERT INTO Personas(nombre, apellido, edad, email) VALUES('$nombre', '$apellido', '$edad', '$email')";
+
+        if($conexionDDBB->query($sentencias)==TRUE){
+            echo "Persona añadida con succeso.";
+        } else {
+            echo "Error al añadir esta persona." . $conexionDDBB->error;
+        }
     }
+
+    $conexionDDBB->close();
 
 ?>

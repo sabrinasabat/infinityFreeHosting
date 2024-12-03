@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Formulario para añadir personas</h1>
-        <form action="manejarBaseDeDatos.php" method="post">
+        <form action="manejarBaseDeDatos.php" method="POST">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             <label for="apellido">Apellidos:</label>
