@@ -20,13 +20,14 @@
     $conexionDDBB->close();
 
 
+    //Inserir las personas que fueron rellenadas en el formulario
     if($_SERVER["REQUEST_METHOD"]=="post"){
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $edad = $_POST['edad'];
         $email = $_POST['email'];
 
-        $sentencias = "INSERT INTO Personas VALUES('$nombre', '$apellido', '$edad', '$email')";
+        $sentencias = "INSERT INTO Personas(nombre, apellido, edad, email) VALUES('$nombre', '$apellido', '$edad', '$email')";
     }
 
 ?>
