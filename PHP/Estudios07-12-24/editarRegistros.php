@@ -10,7 +10,7 @@
     if($conectar->query($editar)===TRUE){
         echo 'Dato cambiado con succeso';
     } else {
-        echo 'No fue posible modificar este campo.'.$conectar->connect_error;
+        echo 'No fue posible modificar este campo.'.$conectar->error;
     }
 
 
