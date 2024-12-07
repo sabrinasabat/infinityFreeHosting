@@ -3,7 +3,7 @@
     global $conectar;
 
     $nombre = 'Ana';
-    $novoCurso = 'Matemática';
+    $novoCurso = 'Matematica';
 
     $editar = "UPDATE Estudiantes SET curso = '$novoCurso' WHERE nombre = '$nombre'";
 
