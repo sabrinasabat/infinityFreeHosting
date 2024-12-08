@@ -27,21 +27,6 @@
                 include 'formularioLogin.html';
             }
         }
-
-
-       /* if($usuario === 'admin' && $contrasena === 'admin'){
-            $_SESSION['usuario'] = $usuario;
-            header("Location: indexAdm.php");
-            exit();
-        } else if($usuario === 'user' && $contrasena === 'user'){
-            $_SESSION['usuario'] = $usuario;
-            header("Location: indexGeneral.php");
-            exit();
-        } else {
-            echo '<p>Usuario o contraseña incorrectos.';
-            include 'formularioLogin.html';
-            exit();
-        }*/
     } else {
         echo '<p>Hay que completar el formulário.</p>';
     }
