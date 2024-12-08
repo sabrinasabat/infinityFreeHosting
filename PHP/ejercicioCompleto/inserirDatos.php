@@ -5,6 +5,7 @@
     $nombreAdm = 'Administrador';
     $usuarioAdm = 'admin';
     $contrasenaAdm = 'admin';
+
     $inserirAdm = "INSERT INTO usuarios (nombre, usuario, contrasena) VALUES ('$nombreAdm', '$usuarioAdm', '$contrasenaAdm')";
 
     if($conexionDDBB->query($inserirAdm)===TRUE){
