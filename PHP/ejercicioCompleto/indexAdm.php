@@ -8,6 +8,9 @@
     $consultaUsuarios = "SELECT id, nombre, usuario FROM usuarios";
     $resultado = $conexionDDBB->query($consultaUsuarios);
 
+    echo '<a href="crearUsuarioForm.html">Crear Nuevo Usuario</a>';
+
+
 
     echo '<table border="2" width="50%">';
 
