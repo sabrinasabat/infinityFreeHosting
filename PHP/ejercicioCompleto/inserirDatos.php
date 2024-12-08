@@ -2,7 +2,10 @@
     include 'conexionBaseDeDatos.php';
     global $conexionDDBB;
 
-    $inserirAdm = "INSERT INTO usuarios VALUES (nombre = 'Administrador', usuario = 'admin', contrasena = 'admin')";
+    $nombreAdm = 'Administrador';
+    $usuarioAdm = 'admin';
+    $contrasenaAdm = 'admin';
+    $inserirAdm = "INSERT INTO usuarios (nombre, usuario, contrasena) VALUES ('$nombreAdm', '$usuarioAdm', '$contrasenaAdm')";
 
     if($conexionDDBB->query($inserirAdm)===TRUE){
         echo 'Administrador creado e insertado con succeso.';
