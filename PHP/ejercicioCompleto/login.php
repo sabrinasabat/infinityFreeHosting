@@ -17,7 +17,7 @@
                 $_SESSION['nombre'] = $usuarioDDBB['nombre'];
 
                 if($usuarioDDBB['usuario'] === 'admin'){
-                    header("Location: indexAdmin.php");
+                    header("Location: indexAdm.php");
                 } else {
                     header("Location: indexGeneral.php");
                 }
