@@ -10,7 +10,7 @@
     $sentenciaSql = "UPDATE Estudiantes SET curso='$curso' WHERE nombre = '$nombre'";
 
     if($conectar->query($sentenciaSql)===TRUE){
-        echo '<p> Curso de '.$nombre.'editado con succeso';
+        echo '<p> Curso de '.$nombre.' editado con succeso';
     } else {
         echo 'Error al editar Curso: '. $conectar->error;
     }
