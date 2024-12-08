@@ -13,7 +13,4 @@
     } else {
         echo 'No fue posible crear la tabla.';
     }
-
-
-
 ?>
