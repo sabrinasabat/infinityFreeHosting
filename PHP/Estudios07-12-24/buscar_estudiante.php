@@ -12,7 +12,8 @@
         $resultado = $conectar->query($sentenciaSql);
 
         if($resultado && $resultado->num_rows>0){
-            echo '<table>';
+            echo '<h2>Resultado de la búsqueda:</h2>';
+            echo '<table border="1">';
             echo '<tr>';
             echo '<th>Nombre</th>';
             echo '<th>Edad</th>';
