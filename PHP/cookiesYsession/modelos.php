@@ -30,4 +30,5 @@ if(isset($_SESSION["nome_da_variavel"])) {
 
 // Destruir uma sessão
 session_destroy();
+
 ?>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form id="formulario" onsubmit="return validar();">
+    <input type="text" id="phone-number" required>
+    <button type="submit">Enviar</button>
+  </form>
+  <script>
+    function validar(){
+      var phoneNumber = document.getElementById('phone-number').value;
+      var phoneRGEX = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/; //Expresion regular para validar un numero de telefono
+      // Los formularios conviene validarlos siempre antes de enviar, para evitar errores en el servidor utilizando expresiones regulares
+      var phoneResult = phoneRGEX.test(phoneNumber);
+      alert("phone: " + phoneResult);
+      return phoneResult; // Retorna true si es valid o false si no es
+    }
+  </script>
+</body>
+</html>

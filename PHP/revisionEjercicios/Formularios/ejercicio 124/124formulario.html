@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 124</title>
+</head>
+<body>
+    <form action="124formulario.php" method="post">
+        <label for="nombre">Nombre Completo: </label>
+        <input type="text" name="nombre" id="nombre">
+
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email">
+
+        <label for="url">URL de su página:</label>
+        <input type="url" name="url" id="url">
+
+        <br>
+
+        <fieldset>
+            <legend>Sexo: </legend>
+            <input type="radio" id="hombre" name="sexo" value="hombre">
+            <label for="hombre">Hombre</label>
+            <input type="radio" id="mujer" name="sexo" value="mujer">
+            <label for="mujer">Mujer</label>
+        </fieldset>
+        <br>
+        <label for="convivientes">Número de convivientes en el domicilio: </label>
+        <input type="number" name="convivientes" id="convivientes">
+        <br><br>
+        <label for="aficiones">Aficiones: </label>
+            <select name="aficiones" id="aficiones">
+                <option value="leer">Leer</option>
+                <option value="jugar la play">Jugar la play</option>
+                <option value="ir al cine">Ir al cine</option>
+                <option value="hacer deportes">Hacer deportes</option>
+            </select>
+
+        <label>Menú favorito:</label>
+            <input type="checkbox" id="menu1" name="menu1" value="pescado">
+            <label for="menu1">Pescado</label>
+            <input type="checkbox" id="menu2" name="menu2" value="carne">
+            <label for="menu2">Carne</label>
+            <input type="checkbox" id="menu3" name="menu3" value="fruta">
+            <label for="menu3">Fruta</label>
+            <input type="checkbox" id="menu4" name="menu4" value="verdura">
+            <label for="menu4">Verdura</label>
+
+
+        <input type="submit" value="Enviar">
+    </form>
+
+
+
+</body>
+</html>

@@ -15,11 +15,13 @@ function adcionarEntradas(){
 
     if(nombre&&correo&&fechaInscripcion){
         const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
         const dataInscripcion = new Date(fechaInscripcion); // Hay que converter a String
+
         if(dataInscripcion>=hoy){
             const nuevaEntrada = new Entradas(nombre, correo, fechaInscripcion);
             arrayEntradas.push(nuevaEntrada);
-            window.alert("Entrada añadida con succeso.");
+            window.alert("Entrada añadida con succeso");
         } else{
             window.alert("La fecha no puede estar en el pasado");
         }

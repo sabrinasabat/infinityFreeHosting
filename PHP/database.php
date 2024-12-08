@@ -15,5 +15,4 @@
     }
     echo "Conexión exitosa";
 
-
 ?>

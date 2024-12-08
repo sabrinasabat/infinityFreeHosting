@@ -27,14 +27,6 @@ function formatoHoras(){
 
 
 
-    /*var hora = horaActual.getHours();
-    var minutos = horaActual.getMinutes();
-    var segundos = horaActual.getSeconds();
-    ;*/
-
-
-
-
 
 
 
