@@ -9,9 +9,10 @@
     <title>Crear Clientes</title>
 </head>
 <body>
-  <form>
+
 
     <h1>Crear Producto</h1>
+    <form action="listado.php" method="post">
       <label for="nombre">Nombre</label><br>
       <input type="text"  name="nombre" id="nombre" required>
       <br><br>
