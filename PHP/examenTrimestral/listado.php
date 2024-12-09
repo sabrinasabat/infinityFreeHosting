@@ -18,7 +18,7 @@
             echo '<td><a href="detalle.php"><button type="button">Detalle</button></a> </td>';
             echo '<td>'.$arrayDeDatos['id']. '</td>';
             echo '<td>'.$arrayDeDatos['nombre']. '</td>';
-            echo '<td></td>';
+            echo '<td><a href="update.php"><button type="button">Actualizar</button></a> <a href="borrar.php"><button type="button">Borrar</button> </a> </td>';
             echo '</tr>';
         }
         echo '</table>';
