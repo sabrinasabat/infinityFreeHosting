@@ -6,7 +6,7 @@
     $resultado = $conexion -> query($sql);
 
     if($resultado->num_rows>0){
-        echo '<table border="2px">';
+        echo '<table border="2px" style="background-color: #d3d3d3">';
         echo '<tr>';
         echo '<th>Detalle</th>';
         echo '<th>Código</th>';
