@@ -10,8 +10,6 @@
 
     echo '<a href="crearUsuarioForm.html">Crear Nuevo Usuario</a>';
 
-
-
     echo '<table border="2" width="50%">';
 
     echo '<tr >';
@@ -21,7 +19,6 @@
     echo '<th>Acción</th>';
     echo '<th>Acción</th>';
     echo '</tr>';
-
 
     if($resultado->num_rows>0){
         while($usuario = $resultado->fetch_assoc()){
@@ -36,7 +33,6 @@
     } else {
         echo '<p>No hay usuarios registrados</p>';
     }
-
 
     echo '</tr>';
     echo '</table>';
