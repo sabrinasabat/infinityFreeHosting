@@ -1,16 +1,13 @@
 <?php
-    //Datos de la conexion
     $host = 'sql108.infinityfree.com';
-    $dbname = 'if0_37620352_proyecto_alumno10';
-    $user = 'if0_37620352';
-    $password = 'swagnabrisa1';
+    $usuario = 'if0_37620352';
+    $contrasena = 'swagnabrisa1';
+    $database = 'if0_37620352_proyecto_alumno10';
 
-    $conexionDDBB = new mysqli($host, $dbname, $user, $password);
+    $conexion = new mysqli($host, $usuario, $contrasena, $database);
 
-    if($conexionDDBB->connect_error){
-        echo 'No fue posible conectar a la base de datos'. $conexionDDBB->connect_error;
+    if($conexion->connect_error){
+        die("No fue posible conectar: ".$conexion->connect_error);
     } else {
-        echo 'Conectado a la base de datos.';
+        echo "Conectado con succeso";
     }
-
-?>
