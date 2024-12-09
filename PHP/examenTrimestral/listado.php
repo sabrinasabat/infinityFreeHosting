@@ -15,10 +15,10 @@
         echo '</tr>';
         while($arrayDeDatos = $resultado->fetch_assoc()){
             echo '<tr>';
-            echo '<td><a href="detalle.php"><button type="button">Detalle</button></a> </td>';
+            echo '<td><a href="detalle.php"><button type="button" style="background-color: deepskyblue">Detalle</button></a> </td>';
             echo '<td>'.$arrayDeDatos['id']. '</td>';
             echo '<td>'.$arrayDeDatos['nombre']. '</td>';
-            echo '<td><a href="update.php"><button type="button">Actualizar</button></a> <a href="borrar.php"><button type="button">Borrar</button> </a> </td>';
+            echo '<td><a href="update.php"><button type="button" style="background-color: yellow">Actualizar</button></a> <a href="borrar.php"><button type="button" style="background-color: red">Borrar</button> </a> </td>';
             echo '</tr>';
         }
         echo '</table>';
