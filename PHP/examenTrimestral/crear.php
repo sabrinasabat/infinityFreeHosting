@@ -2,10 +2,6 @@
     include 'conexion.php';
     global $conexion;
 ?>
-    //crear.php. Será un formulario para rellenar todos los campos de productos (a excepción del id).
-    // Para la familia nos aparecerá un "select" con los nombres de las familias de los productos para elegir uno
-    //(lógicamente, aunque mostremos los nombres pro formulario enviaremos el código).
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +14,13 @@
     <h1>Crear Producto</h1>
       <label for="nombre">Nombre</label><br>
       <input type="text"  name="nombre" id="nombre" required>
-      <br>
+      <br><br>
       <label for="nombreCorto">Nombre Corto</label><br>
       <input type="text"  name="nombreCorto" id="nombreCorto" required>
-      <br>
+      <br><br>
       <label for="precio">Precio (€)</label>
       <input type="text" placeholder="Precio (€)" name="precio" id="precio" required>
-      <br>
+      <br><br>
       <label for="familia">Familia</label>
       <select name="familia" id="familia">
           <option value="camara">Cámaras digitales</option>
@@ -42,8 +38,9 @@
           <option value="software">Software</option>
           <option value="tv">Televisores</option>
           <option value="videocamaras">Videocámaras</option>
-      </select>
+      </select><br><br>
       <label for="descripcion">Descripción</label>
+      <input type="text" name="descripcion" id="descripcion"><br><br>
       <button type="submit">Crear</button>
   </form>
 </body>
