@@ -23,3 +23,22 @@
         }
         echo '</table>';
     }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['nombre']) && !empty($_POST['nombreCorto']) && !empty($_POST['precio']) && !empty($_POST['familia']) && !empty($_POST['descripcion'])) {
+        $nombre = $_POST['nombre'];
+        $nombreCorto = $_POST['nombreCorto'];
+        $precio = $_POST['precio'];
+        $familia = $_POST['familia'];
+        $descripcion = $_POST['descripcion'];
+
+        $sql = "INSERT INTO productos (nombre, nombre_corto, descripcion, pvp, familia) VALUES ('$nombre', '$nombreCorto', '$descripcion', '$precio', '$familia')";
+
+        if ($conexion->query($sql) === TRUE) {
+            echo "Producto añadido correctamente";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conexion->error;
+        }
+
+        header("Location: listado.php");
+        exit;
+    }
