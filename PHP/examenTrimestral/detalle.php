@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    include 'conexionPDO.php';
     global $conexion;
 
     $sql = "SELECT id, nombre, nombre_corto, descripcion, pvp, familia FROM productos";

@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    include 'conexionPDO.php';
     global $conexion;
 ?>
 <!DOCTYPE html>
