@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas</title>
+    <style>
+      table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 100px;
+      }
+      tr, td{
+        border: #d184d1 2px solid;
+        text-align: center;
+        padding: 2px;
+      }
+      tbody{
+        background-color: #d1cdcd;
+      }
+    </style>
+    <script src="entradas.js"></script>
+</head>
+<body>
+  <form id="entrada" action="entradas.js" method="POST">
+    <label for="nombre">Nombre del Asistente</label>
+    <input type="text" name="nombre" id="nombre" required>
+    <br>
+    <label for="correo">Correo electrónico</label>
+    <input type="email" name="correo" id="correo" required>
+    <br>
+    <label for="fechaInscripcion">Fecha de inscripción</label>
+    <input type="date" name="fechaInscripcion" id="fechaInscripcion" required>
+    <br><br>
+    <button type="button" onclick="nuevaEntrada()">Enviar</button>
+    <button type="button" onclick="eliminarEntradas()">Borrar todos los Registros</button>
+  </form>
+
+  <table id="listadoEntradas">
+    <thead>
+    <tr>
+      <td>Nombre</td>
+      <td>Correo</td>
+      <td>Fecha de Inscripción</td>
+      <td>Acción</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  <p id="contador">Contador de Entradas:</p>
+</body>
+</html>
