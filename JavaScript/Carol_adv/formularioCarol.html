@@ -115,7 +115,7 @@
   // Função para gerar o PDF com os dados da pessoa
   async function gerarPDF(dados) {
     // Carregar um template de PDF (você precisa ter um PDF de template com campos específicos)
-    const url = '24_Requerimento-InteiroTeor.pdf'; // Substitua pelo caminho do template PDF
+    const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor.pdf';  // Caminho completo
     const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
 
     // Carregar o PDF existente usando pdf-lib
