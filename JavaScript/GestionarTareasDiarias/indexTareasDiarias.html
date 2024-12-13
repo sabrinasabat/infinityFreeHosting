@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas Diarias</title>
+  <style>
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 100px;
+    }
+    tr, td{
+      border: solid 2px;
+      text-align: center;
+    }
+    tr{
+      background-color: goldenrod;
+    }
+  </style>
+  <script src="tareasDiarias.js"></script>
+</head>
+<body>
+  <form id="tareasDiarias" action="tareasDiarias.js" method="POST">
+    <fieldset >
+      <legend>AÑADIR TAREA</legend>
+      <br>
+      <label for="nombreTarea">Nombre de la Tarea</label>
+      <input type="text" name="nombreTarea" id="nombreTarea" required>
+      <br><br>
+      <label for="prioridad">Prioridad</label>
+      <select name="prioridad" id="prioridad" required>
+        <option value="baja">Baja</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+      </select>
+      <br><br>
+      <label for="fechaLimite">Fecha Limite</label>
+      <input type="date" name="fechaLimite" id="fechaLimite" required>
+      <br><br>
+      <button type="button" onclick="anadirTarea()">Añadir tarea</button>
+      <button type="button" onclick="borrarTabla()">Borrar todas las tarea</button>
+    </fieldset>
+  </form>
+
+  <table id="ensenarTareas">
+    <thead>
+    <tr style="background-color: #d3d3d3">
+      <td>Nombre Tarea</td>
+      <td>Prioridad</td>
+      <td>Fecha Limite Para Realización</td>
+      <td>Acción</td>
+      <td>Acción</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <p id="contador">Contador</p>
+
+</body>
+</html>
