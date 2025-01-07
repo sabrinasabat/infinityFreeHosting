@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Preencher Formulário com CSV</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
 <body>
@@ -60,13 +60,13 @@
     dadosCSV.forEach((registro) => {
       const novaLinha = tabela.insertRow();
 
-      novaLinha.insertCell(0).textContent = registro[0];
-      novaLinha.insertCell(1).textContent = registro[1];
-      novaLinha.insertCell(2).textContent = registro[2] || '';
-      novaLinha.insertCell(3).textContent = registro[3];
-      novaLinha.insertCell(4).textContent = registro[4];
-      novaLinha.insertCell(5).textContent = registro[5];
-      novaLinha.insertCell(6).textContent = registro[6];
+      novaLinha.insertCell(0).textContent = registro[0]; // Tipo
+      novaLinha.insertCell(1).textContent = registro[1]; // Nome
+      novaLinha.insertCell(2).textContent = registro[2] || ''; // Nome 2
+      novaLinha.insertCell(3).textContent = registro[3]; // Registro Civil
+      novaLinha.insertCell(4).textContent = registro[4]; // Livro
+      novaLinha.insertCell(5).textContent = registro[5]; // Folha
+      novaLinha.insertCell(6).textContent = registro[6]; // Termo
 
       // Adiciona botão para gerar PDF
       const acaoCell = novaLinha.insertCell(7);
@@ -89,39 +89,44 @@
     const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
     const form = pdfDoc.getForm();
 
-    // Identificar o tipo de registro
-    const tipo = dados[0].toLowerCase(); // Coluna "Tipo" do CSV
-    if (tipo === 'nascimento') {
-      form.getTextField('tipo1').setText('NASCIMENTO'); // Marca como Nascimento
-      form.getTextField('nome1').setText(dados[1]); // Nome
-      form.getTextField('termo1').setText(dados[6]); // Termo
-      form.getTextField('folha1').setText(dados[5]); // Folha
-      form.getTextField('livro1').setText(dados[4]); // Livro
-    } else if (tipo === 'casamento') {
-      form.getTextField('tipo2').setText('CASAMENTO'); // Marca como Casamento
-      form.getTextField('nome12').setText(dados[1]); // Primeiro Nome (campo correto para Casamento)
-      form.getTextField('nome2').setText(dados[2]); // Segundo Nome
-      form.getTextField('termo2').setText(dados[6]); // Termo
-      form.getTextField('folha2').setText(dados[5]); // Folha
-      form.getTextField('livro2').setText(dados[4]); // Livro
-    } else if (tipo === 'óbito') {
-      form.getTextField('tipo3').setText('ÓBITO'); // Marca como Óbito
-      form.getTextField('nome3').setText(dados[1]); // Nome
-      form.getTextField('termo3').setText(dados[6]); // Termo
-      form.getTextField('folha3').setText(dados[5]); // Folha
-      form.getTextField('livro3').setText(dados[4]); // Livro
-    } else {
-      alert('Tipo desconhecido: ' + tipo);
-      return;
+    try {
+      const tipo = dados[0].toLowerCase(); // Tipo do CSV
+
+      if (tipo === 'nascimento') {
+        form.getTextField('tipo1').setText('NASCIMENTO'); // Preenche o tipo
+        form.getTextField('nome1').setText(dados[1]); // Nome
+        form.getTextField('termo1').setText(dados[6]); // Termo
+        form.getTextField('folha1').setText(dados[5]); // Folha
+        form.getTextField('livro1').setText(dados[4]); // Livro
+      } else if (tipo === 'casamento') {
+        form.getTextField('tipo2').setText('CASAMENTO'); // Preenche o tipo
+        form.getTextField('nome12').setText(dados[1]); // Primeiro Nome
+        form.getTextField('nome2').setText(dados[2]); // Segundo Nome
+        form.getTextField('termo2').setText(dados[6]); // Termo
+        form.getTextField('folha2').setText(dados[5]); // Folha
+        form.getTextField('livro2').setText(dados[4]); // Livro
+      } else if (tipo === 'óbito') {
+        form.getTextField('tipo3').setText('ÓBITO'); // Preenche o tipo
+        form.getTextField('nome3').setText(dados[1]); // Nome
+        form.getTextField('termo3').setText(dados[6]); // Termo
+        form.getTextField('folha3').setText(dados[5]); // Folha
+        form.getTextField('livro3').setText(dados[4]); // Livro
+      } else {
+        alert('Tipo desconhecido: ' + tipo);
+        return;
+      }
+
+      const pdfBytes = await pdfDoc.save();
+
+      // Baixa o PDF gerado
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
+      link.download = `formulario_preenchido_${tipo}.pdf`;
+      link.click();
+    } catch (error) {
+      console.error('Erro ao preencher os campos do PDF:', error.message);
+      alert('Erro: Verifique se os campos do PDF estão corretos.');
     }
-
-    const pdfBytes = await pdfDoc.save();
-
-    // Baixa o PDF gerado
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
-    link.download = `formulario_preenchido_${tipo}.pdf`;
-    link.click();
   }
 </script>
 </body>
