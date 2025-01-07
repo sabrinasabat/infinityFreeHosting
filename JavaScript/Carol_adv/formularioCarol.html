@@ -120,23 +120,23 @@
     // Identificar o tipo de registro
     const tipo = dados[0].toLowerCase();
     if (tipo === 'nascimento') {
-      form.getTextField('tipo1').setText('Nascimento');
-      form.getTextField('nome1').setText(dados[1]);
-      form.getTextField('termo1').setText(dados[6]);
-      form.getTextField('folha1').setText(dados[5]);
-      form.getTextField('livro1').setText(dados[4]);
+      form.getTextField('Tipo1').setText('Nascimento'); // Nome corrigido
+      form.getTextField('Nome1').setText(dados[1]);
+      form.getTextField('Termo1').setText(dados[6]);
+      form.getTextField('Folha1').setText(dados[5]);
+      form.getTextField('Livro1').setText(dados[4]);
     } else if (tipo === 'casamento') {
-      form.getTextField('tipo2').setText('Casamento');
-      form.getTextField('nome2').setText(dados[1]);
-      form.getTextField('termo2').setText(dados[6]);
-      form.getTextField('folha2').setText(dados[5]);
-      form.getTextField('livro2').setText(dados[4]);
+      form.getTextField('Tipo2').setText('Casamento'); // Nome corrigido
+      form.getTextField('Nome2').setText(dados[1]);
+      form.getTextField('Termo2').setText(dados[6]);
+      form.getTextField('Folha2').setText(dados[5]);
+      form.getTextField('Livro2').setText(dados[4]);
     } else if (tipo === 'óbito') {
-      form.getTextField('tipo3').setText('Óbito');
-      form.getTextField('nome3').setText(dados[1]);
-      form.getTextField('termo3').setText(dados[6]);
-      form.getTextField('folha3').setText(dados[5]);
-      form.getTextField('livro3').setText(dados[4]);
+      form.getTextField('Tipo3').setText('Óbito'); // Nome corrigido
+      form.getTextField('Nome3').setText(dados[1]);
+      form.getTextField('Termo3').setText(dados[6]);
+      form.getTextField('Folha3').setText(dados[5]);
+      form.getTextField('Livro3').setText(dados[4]);
     } else {
       alert('Tipo desconhecido: ' + tipo);
       return;
@@ -148,37 +148,6 @@
     link.download = `formulario_preenchido_${tipo}.pdf`;
     link.click();
   }
-
-
-  // Adiciona evento para o botão geral
-  document.getElementById('gerarPDF').addEventListener('click', function () {
-    const tipo = document.getElementById('tipo').value;
-    const nome = document.getElementById('nome').value;
-    const nome2 = document.getElementById('nome2').value;
-    const registroCivil = document.getElementById('registro_civil').value;
-    const livro = document.getElementById('livro').value;
-    const folha = document.getElementById('folha').value;
-    const termo = document.getElementById('termo').value;
-
-    const dados = [tipo, nome, nome2, registroCivil, livro, folha, termo];
-    gerarPDF(dados);
-  });
-
-  async function listarCamposPDF() {
-    const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor_TESTE2.pdf';
-    const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
-
-    const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-    const form = pdfDoc.getForm();
-
-    const fields = form.getFields();
-    fields.forEach(field => {
-      console.log('Campo:', field.getName());
-    });
-  }
-
-  listarCamposPDF();
-
 </script>
 </body>
 </html>
