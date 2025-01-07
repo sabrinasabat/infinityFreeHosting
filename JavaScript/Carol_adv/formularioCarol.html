@@ -118,36 +118,53 @@
     const form = pdfDoc.getForm();
 
     // Identificar o tipo de registro
-    const tipo = dados[0].toLowerCase();
+    const tipo = dados[0].toLowerCase(); // Coluna "Tipo" do CSV
     if (tipo === 'nascimento') {
-      form.getTextField('Tipo1').setText('Nascimento'); // Nome corrigido
-      form.getTextField('Nome1').setText(dados[1]);
-      form.getTextField('Termo1').setText(dados[6]);
-      form.getTextField('Folha1').setText(dados[5]);
-      form.getTextField('Livro1').setText(dados[4]);
+      form.getTextField('Tipo1').setText('NASCIMENTO'); // Marca como Nascimento
+      form.getTextField('Nome1').setText(dados[1]); // Nome
+      form.getTextField('Termo1').setText(dados[6]); // Termo
+      form.getTextField('Folha1').setText(dados[5]); // Folha
+      form.getTextField('Livro1').setText(dados[4]); // Livro
     } else if (tipo === 'casamento') {
-      form.getTextField('Tipo2').setText('Casamento'); // Nome corrigido
-      form.getTextField('Nome2').setText(dados[1]);
-      form.getTextField('Termo2').setText(dados[6]);
-      form.getTextField('Folha2').setText(dados[5]);
-      form.getTextField('Livro2').setText(dados[4]);
+      form.getTextField('Tipo2').setText('CASAMENTO'); // Marca como Casamento
+      form.getTextField('Nome1').setText(dados[1]); // Nome 1
+      form.getTextField('Nome2').setText(dados[2]); // Nome 2
+      form.getTextField('Termo2').setText(dados[6]); // Termo
+      form.getTextField('Folha2').setText(dados[5]); // Folha
+      form.getTextField('Livro2').setText(dados[4]); // Livro
     } else if (tipo === 'óbito') {
-      form.getTextField('Tipo3').setText('Óbito'); // Nome corrigido
-      form.getTextField('Nome3').setText(dados[1]);
-      form.getTextField('Termo3').setText(dados[6]);
-      form.getTextField('Folha3').setText(dados[5]);
-      form.getTextField('Livro3').setText(dados[4]);
+      form.getTextField('Tipo3').setText('ÓBITO'); // Marca como Óbito
+      form.getTextField('Nome3').setText(dados[1]); // Nome
+      form.getTextField('Termo3').setText(dados[6]); // Termo
+      form.getTextField('Folha3').setText(dados[5]); // Folha
+      form.getTextField('Livro3').setText(dados[4]); // Livro
     } else {
       alert('Tipo desconhecido: ' + tipo);
       return;
     }
 
     const pdfBytes = await pdfDoc.save();
+
+    // Baixa o PDF gerado
     const link = document.createElement('a');
     link.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
     link.download = `formulario_preenchido_${tipo}.pdf`;
     link.click();
   }
+
+  // Adiciona evento para o botão geral
+  document.getElementById('gerarPDF').addEventListener('click', function () {
+    const tipo = document.getElementById('tipo').value;
+    const nome = document.getElementById('nome').value;
+    const nome2 = document.getElementById('nome2').value;
+    const registroCivil = document.getElementById('registro_civil').value;
+    const livro = document.getElementById('livro').value;
+    const folha = document.getElementById('folha').value;
+    const termo = document.getElementById('termo').value;
+
+    const dados = [tipo, nome, nome2, registroCivil, livro, folha, termo];
+    gerarPDF(dados);
+  });
 </script>
 </body>
 </html>
