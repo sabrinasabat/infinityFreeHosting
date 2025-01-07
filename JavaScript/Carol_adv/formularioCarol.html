@@ -70,15 +70,13 @@
         const csvText = e.target.result;
         // Processa o CSV com PapaParse
         Papa.parse(csvText, {
-          delimiter: ";",  // Define o delimitador para separação dos campos
-          skipEmptyLines: true, // Ignorar linhas vazias
+          delimiter: ";",
+          skipEmptyLines: true,
           complete: function(results) {
-            console.log(results); // Exibe os dados do CSV processados
-            preencherTabela(results.data); // Preenche a tabela com os dados do CSV
+            preencherTabela(results.data);
           }
         });
       };
-      // Lê o arquivo como texto
       reader.readAsText(file);
     }
   });
@@ -87,7 +85,7 @@
   function preencherTabela(dadosCSV) {
     const tabela = document.getElementById("tabelaDados").getElementsByTagName("tbody")[0];
 
-    dadosCSV.forEach((registro, index) => {
+    dadosCSV.forEach((registro) => {
       const novaLinha = tabela.insertRow();
 
       novaLinha.insertCell(0).textContent = registro[0];
@@ -98,50 +96,62 @@
       novaLinha.insertCell(5).textContent = registro[5];
       novaLinha.insertCell(6).textContent = registro[6];
 
-      // Adiciona um botão para gerar PDF para essa linha
+      // Adiciona botão para gerar PDF
       const acaoCell = novaLinha.insertCell(7);
       const btnGerarPDF = document.createElement("button");
       btnGerarPDF.textContent = "Gerar PDF";
-      btnGerarPDF.onclick = function() {
+      btnGerarPDF.onclick = function () {
         gerarPDF(registro);
       };
       acaoCell.appendChild(btnGerarPDF);
     });
 
-    // Exibe a tabela após preencher
     document.getElementById("tabelaDados").style.display = "table";
   }
 
   // Função para gerar o PDF com os dados da pessoa
   async function gerarPDF(dados) {
-    // Carregar um template de PDF (você precisa ter um PDF de template com campos específicos)
-    const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor.pdf';  // Caminho completo
+    const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor.pdf';
     const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
 
-    // Carregar o PDF existente usando pdf-lib
     const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-
-    // Obter o formulário do PDF
     const form = pdfDoc.getForm();
 
-    // Preencher os campos do formulário
-    form.getTextField('tipo').setText(dados[0]);
-    form.getTextField('nome').setText(dados[1]);
-    form.getTextField('nome2').setText(dados[2] || '');  // Campo opcional
-    form.getTextField('registro_civil').setText(dados[3]);
-    form.getTextField('livro').setText(dados[4]);
-    form.getTextField('folha').setText(dados[5]);
-    form.getTextField('termo').setText(dados[6]);
+    const tipo = dados[0].toLowerCase();
+    if (tipo === 'nascimento') {
+      form.getTextField('Tipo1').setText('Nascimento');
+      form.getTextField('Nome1').setText(dados[1]);
+      form.getTextField('Nome2').setText(dados[2] || '');
+      form.getTextField('RegistroCivil').setText(dados[3]);
+      form.getTextField('Livro1').setText(dados[4]);
+      form.getTextField('Folha1').setText(dados[5]);
+      form.getTextField('Termo1').setText(dados[6]);
+    } else if (tipo === 'casamento') {
+      form.getTextField('Tipo2').setText('Casamento');
+    } else if (tipo === 'óbito') {
+      form.getTextField('Tipo3').setText('Óbito');
+    }
 
-    // Gerar o PDF preenchido
     const pdfBytes = await pdfDoc.save();
-
-    // Criar um link para o download do PDF
     const link = document.createElement('a');
     link.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
-    link.download = 'formulario_preenchido.pdf';
+    link.download = `formulario_preenchido_${tipo}.pdf`;
     link.click();
   }
+
+  // Adiciona evento para o botão geral
+  document.getElementById('gerarPDF').addEventListener('click', function () {
+    const tipo = document.getElementById('tipo').value;
+    const nome = document.getElementById('nome').value;
+    const nome2 = document.getElementById('nome2').value;
+    const registroCivil = document.getElementById('registro_civil').value;
+    const livro = document.getElementById('livro').value;
+    const folha = document.getElementById('folha').value;
+    const termo = document.getElementById('termo').value;
+
+    const dados = [tipo, nome, nome2, registroCivil, livro, folha, termo];
+    gerarPDF(dados);
+  });
 </script>
 </body>
 </html>
