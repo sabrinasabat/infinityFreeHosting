@@ -13,32 +13,6 @@
 <!-- Input de Arquivo para Selecionar o CSV -->
 <input type="file" id="fileInput" accept=".csv">
 
-<!-- Formulário de Exemplo -->
-<form id="meuFormulario">
-  <label for="tipo">Tipo (Nascimento, Casamento, Óbito):</label><br>
-  <input type="text" id="tipo" name="tipo" disabled><br><br>
-
-  <label for="nome">Nome:</label><br>
-  <input type="text" id="nome" name="nome" disabled><br><br>
-
-  <label for="nome2">Nome 2 (se aplicável):</label><br>
-  <input type="text" id="nome2" name="nome2" disabled><br><br>
-
-  <label for="registro_civil">Registro Civil:</label><br>
-  <input type="text" id="registro_civil" name="registro_civil" disabled><br><br>
-
-  <label for="livro">Livro:</label><br>
-  <input type="text" id="livro" name="livro" disabled><br><br>
-
-  <label for="folha">Folha:</label><br>
-  <input type="text" id="folha" name="folha" disabled><br><br>
-
-  <label for="termo">Termo:</label><br>
-  <input type="text" id="termo" name="termo" disabled><br><br>
-
-  <input type="submit" value="Enviar">
-</form>
-
 <!-- Tabela para mostrar os dados -->
 <h2>Dados Preenchidos</h2>
 <table id="tabelaDados" border="1" style="display:none;">
@@ -56,8 +30,6 @@
   </thead>
   <tbody></tbody>
 </table>
-
-<button id="gerarPDF">Gerar PDF Preenchido</button>
 
 <script>
   // Função para lidar com o arquivo CSV selecionado
@@ -88,13 +60,13 @@
     dadosCSV.forEach((registro) => {
       const novaLinha = tabela.insertRow();
 
-      novaLinha.insertCell(0).textContent = registro[0];
-      novaLinha.insertCell(1).textContent = registro[1];
-      novaLinha.insertCell(2).textContent = registro[2] || '';
-      novaLinha.insertCell(3).textContent = registro[3];
-      novaLinha.insertCell(4).textContent = registro[4];
-      novaLinha.insertCell(5).textContent = registro[5];
-      novaLinha.insertCell(6).textContent = registro[6];
+      novaLinha.insertCell(0).textContent = registro[0]; // Tipo
+      novaLinha.insertCell(1).textContent = registro[1]; // Nome
+      novaLinha.insertCell(2).textContent = registro[2] || ''; // Nome 2
+      novaLinha.insertCell(3).textContent = registro[3]; // Registro Civil
+      novaLinha.insertCell(4).textContent = registro[4]; // Livro
+      novaLinha.insertCell(5).textContent = registro[5]; // Folha
+      novaLinha.insertCell(6).textContent = registro[6]; // Termo
 
       // Adiciona botão para gerar PDF
       const acaoCell = novaLinha.insertCell(7);
@@ -119,28 +91,36 @@
 
     // Identificar o tipo de registro
     const tipo = dados[0].toLowerCase(); // Coluna "Tipo" do CSV
-    if (tipo === 'nascimento') {
-      form.getTextField('Tipo1').setText('NASCIMENTO'); // Marca como Nascimento
-      form.getTextField('Nome1').setText(dados[1]); // Nome
-      form.getTextField('Termo1').setText(dados[6]); // Termo
-      form.getTextField('Folha1').setText(dados[5]); // Folha
-      form.getTextField('Livro1').setText(dados[4]); // Livro
-    } else if (tipo === 'casamento') {
-      form.getTextField('Tipo2').setText('CASAMENTO'); // Marca como Casamento
-      form.getTextField('Nome1').setText(dados[1]); // Nome 1
-      form.getTextField('Nome2').setText(dados[2]); // Nome 2
-      form.getTextField('Termo2').setText(dados[6]); // Termo
-      form.getTextField('Folha2').setText(dados[5]); // Folha
-      form.getTextField('Livro2').setText(dados[4]); // Livro
-    } else if (tipo === 'óbito') {
-      form.getTextField('Tipo3').setText('ÓBITO'); // Marca como Óbito
-      form.getTextField('Nome3').setText(dados[1]); // Nome
-      form.getTextField('Termo3').setText(dados[6]); // Termo
-      form.getTextField('Folha3').setText(dados[5]); // Folha
-      form.getTextField('Livro3').setText(dados[4]); // Livro
-    } else {
-      alert('Tipo desconhecido: ' + tipo);
-      return;
+    try {
+      if (tipo === 'nascimento') {
+        form.getTextField('Tipo1').setText('NASCIMENTO'); // Marca como Nascimento
+        form.getTextField('Nome1').setText(dados[1]); // Nome
+        form.getTextField('RegistroCivil').setText(dados[3]); // Registro Civil
+        form.getTextField('Termo1').setText(dados[6]); // Termo
+        form.getTextField('Folha1').setText(dados[5]); // Folha
+        form.getTextField('Livro1').setText(dados[4]); // Livro
+      } else if (tipo === 'casamento') {
+        form.getTextField('Tipo2').setText('CASAMENTO'); // Marca como Casamento
+        form.getTextField('Nome1').setText(dados[1]); // Primeiro Nome
+        form.getTextField('Nome2').setText(dados[2]); // Segundo Nome
+        form.getTextField('RegistroCivil').setText(dados[3]); // Registro Civil
+        form.getTextField('Termo2').setText(dados[6]); // Termo
+        form.getTextField('Folha2').setText(dados[5]); // Folha
+        form.getTextField('Livro2').setText(dados[4]); // Livro
+      } else if (tipo === 'óbito') {
+        form.getTextField('Tipo3').setText('ÓBITO'); // Marca como Óbito
+        form.getTextField('Nome3').setText(dados[1]); // Nome
+        form.getTextField('RegistroCivil').setText(dados[3]); // Registro Civil
+        form.getTextField('Termo3').setText(dados[6]); // Termo
+        form.getTextField('Folha3').setText(dados[5]); // Folha
+        form.getTextField('Livro3').setText(dados[4]); // Livro
+      } else {
+        alert('Tipo desconhecido: ' + tipo);
+        return;
+      }
+    } catch (error) {
+      console.error('Erro ao preencher os campos do PDF:', error.message);
+      alert('Erro ao preencher o formulário. Verifique os nomes dos campos.');
     }
 
     const pdfBytes = await pdfDoc.save();
@@ -151,20 +131,6 @@
     link.download = `formulario_preenchido_${tipo}.pdf`;
     link.click();
   }
-
-  // Adiciona evento para o botão geral
-  document.getElementById('gerarPDF').addEventListener('click', function () {
-    const tipo = document.getElementById('tipo').value;
-    const nome = document.getElementById('nome').value;
-    const nome2 = document.getElementById('nome2').value;
-    const registroCivil = document.getElementById('registro_civil').value;
-    const livro = document.getElementById('livro').value;
-    const folha = document.getElementById('folha').value;
-    const termo = document.getElementById('termo').value;
-
-    const dados = [tipo, nome, nome2, registroCivil, livro, folha, termo];
-    gerarPDF(dados);
-  });
 </script>
 </body>
 </html>
