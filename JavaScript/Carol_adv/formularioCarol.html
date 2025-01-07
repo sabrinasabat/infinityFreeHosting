@@ -163,6 +163,22 @@
     const dados = [tipo, nome, nome2, registroCivil, livro, folha, termo];
     gerarPDF(dados);
   });
+
+  async function listarCamposPDF() {
+    const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor_TESTE2.pdf';
+    const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
+
+    const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+    const form = pdfDoc.getForm();
+
+    const fields = form.getFields();
+    fields.forEach(field => {
+      console.log('Campo:', field.getName());
+    });
+  }
+
+  listarCamposPDF();
+
 </script>
 </body>
 </html>
