@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Preencher Formulário com CSV</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <!-- Biblioteca PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <!-- Biblioteca PDFLib -->
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
 <body>
@@ -32,7 +35,6 @@
 </table>
 
 <script>
-  // Função para lidar com o arquivo CSV selecionado
   document.getElementById('fileInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
 
@@ -40,6 +42,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         const csvText = e.target.result;
+
         // Processa o CSV com PapaParse
         Papa.parse(csvText, {
           delimiter: ";",
@@ -53,7 +56,6 @@
     }
   });
 
-  // Função para preencher a tabela com os dados do CSV
   function preencherTabela(dadosCSV) {
     const tabela = document.getElementById("tabelaDados").getElementsByTagName("tbody")[0];
 
@@ -68,7 +70,6 @@
       novaLinha.insertCell(5).textContent = registro[5]; // Folha
       novaLinha.insertCell(6).textContent = registro[6]; // Termo
 
-      // Adiciona botão para gerar PDF
       const acaoCell = novaLinha.insertCell(7);
       const btnGerarPDF = document.createElement("button");
       btnGerarPDF.textContent = "Gerar PDF";
@@ -81,51 +82,31 @@
     document.getElementById("tabelaDados").style.display = "table";
   }
 
-  // Função para gerar o PDF com os dados da pessoa
   async function gerarPDF(dados) {
     const url = 'https://ssabat.infinityfreeapp.com/JavaScript/Carol_adv/24_Requerimento-InteiroTeor_TESTE2.pdf';
-    const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
-
-    const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-    const form = pdfDoc.getForm();
 
     try {
-      const tipo = dados[0].toLowerCase(); // Tipo do CSV
+      const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
+      const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+      const form = pdfDoc.getForm();
 
+      const tipo = dados[0].toLowerCase();
       if (tipo === 'nascimento') {
-        form.getTextField('tipo1').setText('NASCIMENTO'); // Preenche o tipo
-        form.getTextField('nome1').setText(dados[1]); // Nome
-        form.getTextField('termo1').setText(dados[6]); // Termo
-        form.getTextField('folha1').setText(dados[5]); // Folha
-        form.getTextField('livro1').setText(dados[4]); // Livro
-      } else if (tipo === 'casamento') {
-        form.getTextField('tipo2').setText('CASAMENTO'); // Preenche o tipo
-        form.getTextField('nome12').setText(dados[1]); // Primeiro Nome
-        form.getTextField('nome2').setText(dados[2]); // Segundo Nome
-        form.getTextField('termo2').setText(dados[6]); // Termo
-        form.getTextField('folha2').setText(dados[5]); // Folha
-        form.getTextField('livro2').setText(dados[4]); // Livro
-      } else if (tipo === 'óbito') {
-        form.getTextField('tipo3').setText('ÓBITO'); // Preenche o tipo
-        form.getTextField('nome3').setText(dados[1]); // Nome
-        form.getTextField('termo3').setText(dados[6]); // Termo
-        form.getTextField('folha3').setText(dados[5]); // Folha
-        form.getTextField('livro3').setText(dados[4]); // Livro
-      } else {
-        alert('Tipo desconhecido: ' + tipo);
-        return;
+        form.getTextField('tipo1').setText('NASCIMENTO');
+        form.getTextField('nome1').setText(dados[1]);
+        form.getTextField('termo1').setText(dados[6]);
+        form.getTextField('folha1').setText(dados[5]);
+        form.getTextField('livro1').setText(dados[4]);
       }
 
       const pdfBytes = await pdfDoc.save();
-
-      // Baixa o PDF gerado
       const link = document.createElement('a');
       link.href = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
       link.download = `formulario_preenchido_${tipo}.pdf`;
       link.click();
     } catch (error) {
-      console.error('Erro ao preencher os campos do PDF:', error.message);
-      alert('Erro: Verifique se os campos do PDF estão corretos.');
+      console.error('Erro:', error.message);
+      alert('Erro ao carregar PDF ou preencher campos.');
     }
   }
 </script>
