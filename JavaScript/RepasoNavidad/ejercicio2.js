@@ -29,6 +29,7 @@ Crea una función que se denomine «principal2» y que se invoque cuando se puls
 
 function principal2(){
     let texto = prompt("Introduzca un texto con al menos 10 palabras");
+    //variables utilizadas
     let palabras = texto.split(" ");
     let letras = texto.replace(/[^a-zA-Z]/g, "");
     let a = texto.match(/a/gi);
@@ -37,28 +38,30 @@ function principal2(){
     let o = texto.match(/o/gi);
     let u = texto.match(/u/gi);
     var vocalRepetida = "";
+    //porcentajes
     let porcentajeA = a.length/letras.length*100;
     let porcentajeE = e.length/letras.length*100;
     let porcentajeI = i.length/letras.length*100;
     let porcentajeO = o.length/letras.length*100;
     let porcentajeU = u.length/letras.length*100;
 
-
+    //validaciones: texto vacío
     if(texto === ""){
         alert("No has introducido nada");
         return;
     }
-
+    //validaciones: texto con menos de 10 palabras
     if(texto.split(" ").length < 10){
         alert("El texto tiene que tener AL MENOS 10 palabras");
         return;
     }
-
+    //validaciones: texto no válido
     if (!texto.match(/^[a-zA-Z0-9.,;:'\"¿?¡!\s-]+(\.\.\.)?$/)) {
         alert("El texto introducido no es válido");
         return;
     }
 
+    //letra que más se repite
     if(a.length>e.length && a.length>i.length && a.length>o.length && a.length>u.length){
         vocalRepetida = "A";
     } else if(e.length>a.length && e.length>i.length && e.length>o.length && e.length>u.length){
@@ -70,9 +73,7 @@ function principal2(){
     } else{
         vocalRepetida = "U";
     }
-
-
-
+    //mostrar resultados
     alert(`Cantidad de palabras: ${palabras.length}\n`+
     `Cantidad de letras: ${letras.length}\n`+
     `Cantidad de letras A: ${a.length}\n`+
@@ -86,9 +87,6 @@ function principal2(){
     `Porcentaje de aparición de la vocal I: ${Math.round(porcentajeI)}%\n`+
     `Porcentaje de aparición de la vocal O: ${Math.round(porcentajeO)}%\n`+
     `Porcentaje de aparición de la vocal U: ${Math.round(porcentajeU)}%\n`);
-
-
-
 }
 
 
