@@ -5,19 +5,19 @@ $metodo = $_SERVER["REQUEST_METHOD"];
 
 switch ($metodo){
     case "GET":
-        echo json_encode(["mensaje" => "!Hola¡ Hiciste una petición GET"]);
+        echo json_encode(["mensaje" => "Hola. Hiciste una peticion GET"]);
         break;
     case "POST":
-        echo json_encode(["mensaje" => "!Hola¡ Hiciste una petición POST"]);
+        echo json_encode(["mensaje" => "Hola. Hiciste una peticion POST"]);
         break;
     case "PUT":
-        echo json_encode(["mensaje" => "!Hola¡ Hiciste una petición PUT"]);
+        echo json_encode(["mensaje" => "Hola. Hiciste una peticion PUT"]);
         break;
     case "DELETE":
-        echo json_encode(["mensaje" => "!Hola¡ Hiciste una petición DELETE"]);
+        echo json_encode(["mensaje" => "Hola. Hiciste una peticion DELETE"]);
         break;
     default:
-        echo json_encode(["mensaje" => "!Hola¡ Hiciste una petición desconocida"]);
+        echo json_encode(["mensaje" => "Hola. Hiciste una peticion desconocida"]);
         break;
 }
 ?>
