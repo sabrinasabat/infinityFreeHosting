@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/output.css" rel="stylesheet">
+    <title>Marcar Citas</title>
+</head>
+<body class="bg-neutral-200 flex flex-col min-h-screen">
+    <!-- Barra de navegación -->
+    <nav class="flex items-center justify-between flex-wrap bg-red-900 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+            <span class="font-semibold text-xl tracking-tight">Lex Legal Abogados</span>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow">
+                <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">Inicio</a>
+                <a href="citas.html" class="block mt-4 lg:inline-block lg:mt-0 text-white font-semibold hover:text-white mr-4">Citas</a>
+                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">Servicios</a>
+                <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Lado izquierdo: Calendario -->
+            <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-red-900 mb-4 text-center">Calendario</h2>
+                <p class="text-gray-700 mb-4 text-center">En verde: Días disponibles<br>En rojo: Días no disponibles</p>
+                <div class="flex justify-center">
+                    <div class="grid grid-cols-7 gap-2">
+                        <!-- Generar días de ejemplo -->
+                        <div class="text-center p-2 bg-green-200 text-green-900 rounded">1</div>
+                        <div class="text-center p-2 bg-green-200 text-green-900 rounded">2</div>
+                        <div class="text-center p-2 bg-red-200 text-red-900 rounded">3</div>
+                        <div class="text-center p-2 bg-green-200 text-green-900 rounded">4</div>
+                        <div class="text-center p-2 bg-red-200 text-red-900 rounded">5</div>
+                        <div class="text-center p-2 bg-green-200 text-green-900 rounded">6</div>
+                        <div class="text-center p-2 bg-green-200 text-green-900 rounded">7</div>
+                        <!-- Continuar con más días -->
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Horas Disponibles</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button class="bg-green-200 text-green-900 rounded p-2 hover:bg-green-300">10:00</button>
+                        <button class="bg-green-200 text-green-900 rounded p-2 hover:bg-green-300">11:00</button>
+                        <button class="bg-green-200 text-green-900 rounded p-2 hover:bg-green-300">12:00</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lado derecho: Lista de abogados -->
+            <div class="lg:w-1/2 bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-red-900 mb-4 text-center">Selecciona un Abogado</h2>
+                <div class="space-y-4">
+                    <!-- Abogado 1 -->
+                    <div class="flex items-center gap-4 p-4 border rounded-lg">
+                        <img src="abogado1.jpg" alt="Foto del Abogado" class="w-16 h-16 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-700">Dr. Juan Pérez</p>
+                            <p class="text-sm text-gray-500">Especialidad: Derecho Civil</p>
+                            <p class="text-sm text-gray-500">Tiempo de la consulta: 1 hora</p>
+                        </div>
+                        <p class="ml-auto font-semibold text-red-900">$100</p>
+                    </div>
+                    <!-- Abogado 2 -->
+                    <div class="flex items-center gap-4 p-4 border rounded-lg">
+                        <img src="abogado2.jpg" alt="Foto del Abogado" class="w-16 h-16 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-700">Dra. María López</p>
+                            <p class="text-sm text-gray-500">Especialidad: Derecho Laboral</p>
+                            <p class="text-sm text-gray-500">Tiempo de la consulta: 1 hora</p>
+                        </div>
+                        <p class="ml-auto font-semibold text-red-900">$120</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-red-900 p-3">
+        <div class="flex justify-between text-white text-sm">
+            <div>
+                <h3 class="font-semibold mb-2">Páginas</h3>
+                <a href="#" class="block text-red-200 hover:text-white">Home</a>
+                <a href="#" class="block text-red-200 hover:text-white">Servicios</a>
+                <a href="#" class="block text-red-200 hover:text-white">Sobre Nosotros</a>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Política de Privacidad</h3>
+                <a href="#" class="block text-red-200 hover:text-white">Cookies</a>
+                <a href="#" class="block text-red-200 hover:text-white">Política de Privacidad</a>
+                <a href="#" class="block text-red-200 hover:text-white">Preguntas Frecuentes</a>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Contacto</h3>
+                <a href="mailto:contacto@empresa.com" class="block text-red-200 hover:text-white">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

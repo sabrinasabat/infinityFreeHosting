@@ -5,7 +5,7 @@ class Entrada {
         this.fechaInscripcion = fechaInscripcion;
     }
 }
-    arrayEntradas = [];
+arrayEntradas = [];
 
     //en la funcion entrada no permito que sea inserido dos emails iguales
     // tampoco permito que se inserte una fecha en el pasado

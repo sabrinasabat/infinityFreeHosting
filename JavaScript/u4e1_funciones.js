@@ -5,12 +5,14 @@
 // mediante el método con onClick ejecutará una función.
 
 function nombreCompleto(){
+    debugger;
     var nombre = window.prompt("Digite su nombre: ");
     var apellido = window.prompt("Digite sus apellidos: ");
     window.alert("Bienvenido, "+nombre+" "+apellido+"!");
 }
 
 function edad(){
+    debugger;
     var edad = window.prompt("Digite su edad: ");
     if(edad<18){
         window.alert("Eres menor de edad, cuidado con lo que accedes en internet.");

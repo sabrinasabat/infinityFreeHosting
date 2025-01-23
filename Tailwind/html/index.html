@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/output.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Castro Abogados</title>
+    <style>
+        .dropdown-content {
+            display: none;
+            padding-left: 20px;
+        }
+        .dropdown-btn {
+            background-color: #9b2c2c;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border-radius: 5px;
+        }
+        .dropdown-btn:hover {
+            background-color: #7f1d1d;
+        }
+        .active {
+            display: block;
+        }
+        .dropdown-container {
+            margin-bottom: 15px;
+        }
+        /* Estilo para el modal */
+        .modal {
+            display: none; /* Inicialmente escondido */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .modal-content input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .modal-content button {
+            background-color: #9b2c2c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #9b2c2c;
+        }
+
+        /* Estilos para el dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute ;
+            background-color: #9b2c2c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Resaltar opciones al pasar el ratón */
+        .dropdown-content a:hover {
+            background-color: #f3f4f6; /* Fondo claro al pasar el ratón */
+            color: #9b2c2c; /* Cambiar color del texto si es necesario */
+        }
+    </style>
+</head>
+<body class="bg-neutral-200 flex flex-col min-h-screen">
+    <!-- Barra de navegação -->
+    <nav class="flex items-center justify-between flex-wrap bg-red-900 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+            <span class="font-semibold text-xl tracking-tight">Castro Abogados</span>
+        </div>
+        <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-red-200 border-red-400 hover:text-white hover:border-white">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            </button>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow flex justify-start">
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Sobre Nosotros
+                </a>
+
+                <div class="dropdown relative">
+                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4 cursor-pointer">
+                        Servicios 
+                    </a>
+                    <div class="dropdown-content absolute bg-white shadow-lg text-white rounded-lg">
+                        <a href="#" class="block px-4 py-2">Tutoria Universitaria</a>
+                        <a href="#" class="block px-4 py-2">Asesoramiento Jurídico</a>
+                        <a href="#" class="block px-4 py-2">Visados</a>
+                        <a href="#" class="block px-4 py-2">Nacionalidades</a>
+                        <a href="#" class="block px-4 py-2">Homologaciones</a>
+                        <a href="#" class="block px-4 py-2">Convalidaciones</a>
+                    </div>
+                </div>
+                <a href="citas.html" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Gestione su cita
+                </a>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Testimonios
+                </a>
+            </div>
+            <div>
+                <a id="openModal" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0 cursor-pointer">
+                    Área de Clientes
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Lado izquierdo: Texto -->
+            <div class="lg:w-1/2 text-gray-700">
+                <h1 class="text-3xl font-bold mb-4" id="about-us">Sobre Nosotros</h1>
+                <p class="mb-4">
+                    Somos un equipo de abogados con más de 20 años de experiencia ofreciendo soluciones legales personalizadas a empresas de todos los tamaños y sectores. Nuestra especialización abarca diversas ramas del derecho, como Derecho Corporativo, Derecho Internacional y Asesoría Jurídica Integral, entre otras. Nos destacamos por nuestra capacidad para entender las necesidades únicas de cada cliente y brindar estrategias innovadoras que resuelvan de manera eficiente los desafíos legales que enfrentan.<br><br>
+
+                    Con una sólida experiencia en fusiones, adquisiciones, reestructuración empresarial y resolución de disputas, ofrecemos un servicio integral que optimiza el rendimiento legal de las empresas, tanto a nivel local como internacional. Además, asesoramos en la elaboración y ejecución de contratos comerciales, ayudando a nuestras empresas clientes a cumplir con las normativas y a tomar decisiones estratégicas informadas.<br><br>
+
+                    Nuestra filosofía de trabajo se basa en la transparencia, la confianza y el compromiso con la excelencia. Cada solución que brindamos está alineada con los objetivos de nuestros clientes, siempre buscando proteger sus intereses y maximizar su éxito en un entorno legal complejo y dinámico.
+
+
+
+                </p><br><br>
+                <h2 class="text-2xl font-semibold mb-3">Áreas de Especialización</h2>
+
+                
+                <div id="accordion-color" data-accordion="collapse" data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white">
+                    <h2 id="accordion-color-heading-1">
+                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-red-900 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-red-900 gap-3" data-accordion-target="#accordion-color-body-1" aria-expanded="true" aria-controls="accordion-color-body-1">
+                        <span>Asesoría Jurídica Integral</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                    </h2>
+                    <div id="accordion-color-body-1" class="hidden" aria-labelledby="accordion-color-heading-1">
+                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-red-900">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">En nuestra firma, brindamos asesoría jurídica integral que abarca todos los aspectos del derecho corporativo y comercial. Contamos con una vasta experiencia en la negociación, redacción y revisión de contratos, acuerdos comerciales y alianzas estratégicas, siempre enfocados en proteger los intereses de nuestros clientes y asegurar el cumplimiento normativo de sus operaciones.<br><br>
+
+                        Nuestra práctica en resolución de disputas es otra área clave de nuestra experiencia. Hemos representado con éxito a clientes en procedimientos judiciales y arbitrales, tanto a nivel nacional como internacional, resolviendo conflictos relacionados con contratos, incumplimiento de obligaciones y disputas entre accionistas, entre otros. Además, nuestra asesoría en cumplimiento normativo incluye la implementación de políticas internas que favorezcan el cumplimiento de las leyes locales e internacionales, especialmente en áreas sensibles como el derecho laboral, la protección de datos y la responsabilidad penal corporativa.<br><br>
+                            
+                        Desde pequeñas empresas en expansión hasta grandes corporaciones consolidadas, trabajamos para garantizar que nuestros clientes estén completamente protegidos desde una perspectiva legal, ayudándoles a tomar decisiones informadas y a gestionar sus riesgos de manera eficiente y eficaz.</p>
+                    </div>
+                    </div>
+                    <h2 id="accordion-color-heading-2">
+                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-red-900 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-red-900 gap-3" data-accordion-target="#accordion-color-body-2" aria-expanded="false" aria-controls="accordion-color-body-2">
+                        <span>Derecho Corporativo</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                    </h2>
+                    <div id="accordion-color-body-2" class="hidden" aria-labelledby="accordion-color-heading-2">
+                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dar: bg-red-900">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Nuestro equipo de abogados especializados en Derecho Corporativo posee una amplia experiencia en las áreas de fusiones, adquisiciones y reestructuración empresarial. Hemos trabajado con empresas de diversas industrias, tanto a nivel nacional como internacional, ayudándolas a gestionar procesos complejos de integración, adquisición y transformación corporativa. Nuestra experiencia incluye la elaboración y negociación de acuerdos estratégicos, la estructuración de operaciones de compra y venta de activos, así como la optimización de estructuras corporativas para asegurar una mayor eficiencia y competitividad.<br><br>
+
+                        Además, contamos con un equipo de abogados especializados en la reestructuración de empresas en dificultades financieras, ayudando a nuestros clientes a llevar a cabo procesos de reestructuración exitosos, minimizando riesgos y protegiendo sus activos y operaciones. Asesoramos también en el ámbito de la due diligence, garantizando que nuestras empresas clientes realicen adquisiciones seguras y beneficiosas.<br><br>
+                            
+                        Asimismo, ofrecemos consultoría estratégica sobre la gestión de riesgos legales en el entorno corporativo, ayudando a las empresas a prevenir conflictos y a cumplir con todas las normativas vigentes. Nos comprometemos a optimizar el rendimiento y el cumplimiento legal de nuestros clientes, con un enfoque personalizado que se ajusta a las necesidades de cada empresa, independientemente de su tamaño o sector.</p>
+                    </div>
+                    </div>
+                    <h2 id="accordion-color-heading-3">
+                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-red-900 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-red-900 gap-3" data-accordion-target="#accordion-color-body-3" aria-expanded="false" aria-controls="accordion-color-body-3">
+                        <span>Derecho Internacional</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                    </h2>
+                    <div id="accordion-color-body-3" class="hidden" aria-labelledby="accordion-color-heading-3">
+                    <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 dark:bg-red-900">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">El equipo de abogados de nuestra firma cuenta con una vasta experiencia en Derecho Internacional, con un enfoque particular en disputas comerciales transnacionales y contratos internacionales. Asesoramos a nuestros clientes en la negociación y ejecución de acuerdos internacionales que aborden cuestiones legales complejas, tales como la jurisdicción, el cumplimiento de normativas locales e internacionales, y la resolución de disputas en diversas regiones del mundo.<br><br>
+
+                        En el ámbito de los arbitrajes internacionales, hemos representado con éxito a clientes ante tribunales arbitrales de renombre, incluyendo el Centro Internacional de Arreglo de Diferencias Relativas a Inversiones (CIADI), la Corte Internacional de Comercio (ICC) y la Cámara de Comercio Internacional, entre otros. Nuestra experiencia abarca diversas ramas del derecho internacional, incluyendo la protección de inversiones extranjeras, las disputas comerciales transnacionales y la negociación de acuerdos internacionales en sectores clave como el comercio, la energía y la tecnología.<br><br>
+                            
+                        Además, nuestra firma ofrece soluciones globales, ayudando a nuestros clientes a navegar en un entorno legal cada vez más interconectado y a mitigar los riesgos asociados con la expansión internacional de sus negocios. Nos enorgullece ser un socio estratégico para empresas que buscan resolver conflictos en un contexto internacional, siempre con un enfoque práctico y orientado a resultados.</p>
+                    </div>
+                    </div>
+                </div>
+            </div>    
+            <!-- Lado derecho: Imagen de la equipo -->
+            <div class="lg:w-1/2 p-0 m-0">
+                <img src="abogados.jpg" alt="Equipo de Abogados" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+        </div>
+    </main>
+    
+
+    <!-- Footer -->
+    <footer class="bg-red-900 p-3">
+        <div class="flex justify-around text-white">
+            <!-- Primera columna: Páginas -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Páginas</h3>
+                <a href="#" class="block mt-1 text-red-200">Home</a>
+                <a href="index.html" class="block mt-1 text-red-200">Servicios</a>
+                <a href="#" class="block mt-1 text-red-200">Sobre Nosotros</a>
+                <a href="citas.html" class="block mt-1 text-red-200">Citas</a>
+            </div>
+    
+            <!-- Segunda columna: Política de Privacidade y otros -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Política de Privacidad</h3>
+                <a href="#" class="block mt-1 text-red-200">Cookies</a>
+                <a href="#" class="block mt-1 text-red-200">Política de Privacidad</a>
+                <a href="#" class="block mt-1 text-red-200">Preguntas Frecuentes</a>
+            </div>
+    
+            <!-- Terceira columna: Contato -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Contacto</h3>
+                <a href="mailto:contacto@empresa.com" class="block mt-1 text-red-200">Email</a>
+            </div>
+    
+            <div class="flex flex-col items-center space-y-2"> <!-- Contenedor vertical de íconos -->
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com" target="_blank" class="text-white hover:text-blue-700">
+                        <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/>
+                            <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
+                        </svg> 
+                    </a>
+                </div>    
+                <!-- Instagram -->
+                <a href="https://www.instagram.com" target="_blank" class="text-white hover:text-pink-500">
+                    <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                      </svg>
+                      
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com" target="_blank" class="text-white hover:text-blue-600">
+                    <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+                      </svg>
+                      
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Bienvenido(a) de vuelta</h2>
+            <i class="fas fa-user-circle text-6xl text-gray-400" style="font-size: 60px; margin-bottom: 20px;"></i>
+            <input type="text" placeholder="E-mail" id="email">
+            <input type="password" placeholder="Contraseña" id="password">
+            <button id="loginButton">Entrar</button>
+        </div>
+    </div>
+
+    <script>
+        //para que se abra las areas de especializaciones
+        const acc = document.querySelectorAll("[data-accordion-target]");
+        acc.forEach(function(element) {
+            element.addEventListener("click", function() {
+                const targetId = element.getAttribute('data-accordion-target'); // Obtiene el id del objetivo
+                const content = document.querySelector(targetId); // Selecciona el contenido correspondiente
+                if (content.classList.contains("hidden")) {
+                    content.classList.remove("hidden");
+                } else {
+                    content.classList.add("hidden");
+                }
+            });
+        });
+
+        
+        // Abrir modal
+        const openModal = document.getElementById('openModal');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+
+        openModal.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        // Fechar modal
+        closeModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        // Simular login e redirecionar
+        const loginButton = document.getElementById('loginButton');
+        loginButton.addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                alert(`Login com: ${email}`);
+                loginModal.style.display = 'none';
+                // Redirecionar para nueva página
+                window.location.href = "pagina-nova.html";
+            } else {
+                alert("Por favor, rellene todos los campos!");
+            }
+        });
+
+        // Fechar modal ao clicar fora dele
+        window.addEventListener('click', (event) => {
+            if (event.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
