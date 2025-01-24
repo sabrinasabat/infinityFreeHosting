@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/output.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Carrusel - Tutoria Universitaria</title>
+    <style>
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .carousel-indicators button {
+            background-color: #9b2c2c;
+            border: none;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-indicators button.active {
+            background-color: #7f1d1d;
+        }
+
+                /* Estilos para el dropdown */
+                .dropdown-content {
+            display: none;
+            position: absolute ;
+            background-color: #9b2c2c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Resaltar opciones al pasar el ratón */
+        .dropdown-content a:hover {
+            background-color: #f3f4f6; /* Fondo claro al pasar el ratón */
+            color: #9b2c2c; /* Cambiar color del texto si es necesario */
+        }
+    </style>
+</head>
+<body class="bg-neutral-200 flex flex-col min-h-screen" id="top">
+    <nav class="flex items-center justify-between flex-wrap bg-red-900 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+            <span class="font-semibold text-xl tracking-tight">Castro Abogados</span>
+        </div>
+        <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-red-200 border-red-400 hover:text-white hover:border-white">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            </button>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow flex justify-start">
+                <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Sobre Nosotros
+                </a>
+
+                <div class="dropdown relative">
+                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4 cursor-pointer">
+                        Servicios 
+                    </a>
+                    <div class="dropdown-content absolute bg-white shadow-lg text-white rounded-lg">
+                        <a href="#" class="block px-4 py-2">Tutoria Universitaria</a>
+                        <a href="#" class="block px-4 py-2">Asesoramiento Jurídico</a>
+                        <a href="#" class="block px-4 py-2">Visados</a>
+                        <a href="#" class="block px-4 py-2">Nacionalidades</a>
+                        <a href="#" class="block px-4 py-2">Homologaciones</a>
+                        <a href="#" class="block px-4 py-2">Convalidaciones</a>
+                    </div>
+                </div>
+                <a href="citas.html" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Gestione su cita
+                </a>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-red-200 hover:text-white mr-4">
+                    Testimonios
+                </a>
+            </div>
+            <div>
+                <a id="openModal" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0 cursor-pointer">
+                    Área de Clientes
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-6">Tutoria Universitaria</h1>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="harvardUniversidad.png" alt="Imagen 1">
+                <img src="universidadValencia.jpg" alt="Imagen 2">
+                <img src="universidadCentroAmericana.jpg" alt="Imagen 3">
+            </div>
+            <div class="carousel-buttons">
+                <button id="prev">&#10094;</button>
+                <button id="next">&#10095;</button>
+            </div>
+        </div>
+        <div class="carousel-indicators">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-red-900 p-3">
+        <div class="flex justify-around text-white">
+            <!-- Primera columna: Páginas -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Páginas</h3>
+                <a href="index.html" class="block mt-1 text-red-200">Home</a>
+                <a href="index.html" class="block mt-1 text-red-200">Servicios</a>
+                <a href="#" class="block mt-1 text-red-200">Sobre Nosotros</a>
+                <a href="citas.html" class="block mt-1 text-red-200">Citas</a>
+            </div>
+    
+            <!-- Segunda columna: Política de Privacidade y otros -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Política de Privacidad</h3>
+                <a href="#" class="block mt-1 text-red-200">Cookies</a>
+                <a href="#" class="block mt-1 text-red-200">Política de Privacidad</a>
+                <a href="#" class="block mt-1 text-red-200">Preguntas Frecuentes</a>
+            </div>
+    
+            <!-- Terceira columna: Contato -->
+            <div class="text-sm">
+                <h3 class="font-semibold text-lg mb-2">Contacto</h3>
+                <a href="mailto:contacto@empresa.com" class="block mt-1 text-red-200">Email</a>
+            </div>
+    
+            <div class="flex flex-col items-center space-y-2"> <!-- Contenedor vertical de íconos -->
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com" target="_blank" class="text-white hover:text-blue-700">
+                        <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/>
+                            <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
+                        </svg> 
+                    </a>
+                </div>    
+                <!-- Instagram -->
+                <a href="https://www.instagram.com" target="_blank" class="text-white hover:text-pink-500">
+                    <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                      </svg>
+                      
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com" target="_blank" class="text-white hover:text-blue-600">
+                    <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+                      </svg>
+                      
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const images = document.querySelector('.carousel-images');
+        const indicators = document.querySelectorAll('.carousel-indicators button');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            images.style.transform = `translateX(-${currentIndex * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : indicators.length - 1;
+            updateCarousel();
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex < indicators.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-slide
+        setInterval(() => {
+            currentIndex = (currentIndex < indicators.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        }, 5000);
+    </script>
+</body>
+</html>
