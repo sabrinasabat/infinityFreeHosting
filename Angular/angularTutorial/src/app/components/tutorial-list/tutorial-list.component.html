@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Lista de Tutoriales</h2>
+  <mat-list role="list">
+    <mat-list-item *ngFor="let tutorial of listaDeTuroriales" let i="index">
+      <!--<mat-list-item *ngFor="let tutorial of listaDeTuroriales" (click)="obtenerListaDeTuroriales()">-->
+      {{ tutorial.title }} - {{ tutorial.description }} - {{ tutorial.published ? 'Published' : 'Pending' }}
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+
+

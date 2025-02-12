@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  background-color: lightpink;
+}
+
+.form-card{
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+mat-form-field{
+  width: 100%;
+}

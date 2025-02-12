@@ -1,0 +1,17 @@
+<div>
+  <h2>Bienvenido al Home</h2>
+  <button (click)="getProtectedToken()">Obtener Datos del Usuario</button>
+
+  <div *ngIf="protectedData">
+    <h3>Datos del usuario:</h3>
+    <pre>{{protectedData | json}}</pre>
+  </div>
+
+  <p *ngIf="errorMensaje" style="color: crimson;">{{errorMensaje}}</p>
+</div>
+
+
+
+
+
+

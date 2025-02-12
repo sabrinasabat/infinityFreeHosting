@@ -1,0 +1,34 @@
+  <div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">CESUR DAW</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/tutorials" class="nav-link">Tutorials</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/add" class="nav-link">Add</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/published" class="nav-link">Published</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/details" class="nav-link">Details</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="deleteAllTutorials()" class="nav-link text-danger">Delete All</a>
+        </li>
+      </div>
+    </nav>
+    <section>
+      <div class="example-label"></div>
+      <div class="example-button-row">
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button disabled>Ejemplo botón desabilitado</button>
+        <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+      </div>
+    </section>
+
+    <div class="container mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

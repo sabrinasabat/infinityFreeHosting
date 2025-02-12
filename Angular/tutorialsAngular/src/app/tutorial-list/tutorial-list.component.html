@@ -1,0 +1,5 @@
+<div *ngFor="let tutorial of tutorials">
+  <h4>{{ tutorial.title }}</h4>
+  <p>{{ tutorial.description }}</p>
+  <p>Status: {{ tutorial.published ? 'Published' : 'Pending' }}</p>
+</div>
