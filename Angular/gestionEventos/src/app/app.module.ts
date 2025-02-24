@@ -9,6 +9,7 @@ import { ComprarEntradaComponent } from './components/comprar-entrada/comprar-en
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import {FormsModule} from "@angular/forms";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import {FormsModule} from "@angular/forms";
         FormsModule,
         HttpClientModule
     ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
