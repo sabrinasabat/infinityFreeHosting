@@ -1,0 +1,17 @@
+<div class="comprar-container">
+  <div class="comprar-box" *ngIf="evento">
+    <h2>Comprar Entradas</h2>
+    <h3>{{ evento.nombre }}</h3>
+    <p><strong>Data:</strong> {{ evento.fecha }}</p>
+    <p><strong>Capacidade:</strong> {{ evento.capacidad }}</p>
+
+    <label for="cantidad">Quantidade de ingressos:</label>
+    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="{{ evento.capacidad }}" />
+
+    <button (click)="comprarEntrada()">Comprar</button>
+
+    <p *ngIf="mensaje" class="mensagem">{{ mensaje }}</p>
+  </div>
+
+  <p *ngIf="erro" class="erro">{{ erro }}</p>
+</div>

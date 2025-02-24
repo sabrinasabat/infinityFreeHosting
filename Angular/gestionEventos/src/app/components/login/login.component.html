@@ -1,0 +1,13 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Iniciar Sesión</h2>
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="Introduce tu email" [(ngModel)]="email" />
+
+    <label for="password">Contraseña:</label>
+    <input id="password" type="password" placeholder="Introduce tu contraseña" [(ngModel)]="contrasena" />
+
+    <button (click)=hacerLogin()>Entrar</button>
+  </div>
+</div>

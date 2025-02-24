@@ -1,0 +1,15 @@
+<div class="evento-detalle-container">
+  <div *ngIf="evento; else errorTemplate" class="evento-detalle-box">
+    <h2>{{ evento.nombre }}</h2>
+    <p><strong>Data:</strong> {{ evento.fecha }}</p>
+    <p><strong>Capacidade:</strong> {{ evento.capacidad }}</p>
+
+    <a [routerLink]="['/comprar', evento.id]" class="botao-comprar">
+      Comprar Ingressos
+    </a>
+  </div>
+
+  <ng-template #errorTemplate>
+    <p class="erro">{{ error }}</p>
+  </ng-template>
+</div>
